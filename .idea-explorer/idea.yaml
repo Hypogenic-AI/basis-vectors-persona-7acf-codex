@@ -1,0 +1,25 @@
+idea:
+  title: Basis Vectors in Persona Space
+  domain: nlp
+  hypothesis: 'Persona representations in language models can be decomposed into component
+    vectors, and applying PCA to persona vectors derived from documents with diverse
+    personas will reveal the most primary components in the residual stream geometry.
+
+    '
+  background:
+    description: 'Many personas seem to be somewhat linear, in that we can use activation
+      steering to encourage them. But surely many of these decompose into the same
+      component parts. Can we look at documents with a bunch of different personas,
+      find a bunch of persona vectors, and then do PCA to start investigating the
+      parts of persona that are most primary in the residual stream geometry?
+
+      '
+  metadata:
+    author: Ari Holtzman
+    source: IdeaHub
+    source_url: https://hypogenic.ai/ideahub/idea/mYaGsOnWVhhGF2AZdzgg
+    idea_id: basis_vectors_in_persona_space_20260228_232949_0f640b98
+    created_at: '2026-02-28T23:29:49.652309'
+    status: submitted
+    github_repo_name: basis-vectors-persona-7acf-codex
+    github_repo_url: https://github.com/Hypogenic-AI/basis-vectors-persona-7acf-codex
