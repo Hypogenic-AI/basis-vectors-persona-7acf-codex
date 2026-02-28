@@ -1,0 +1,12 @@
+\section{Related Work}
+\label{sec:related_work}
+
+\para{Residual-stream geometry and linear structure.} A growing line of work argues that transformer residual states encode meaningful geometry, including belief-state organization and task-relevant linear directions \citep{shai2024belief}. Representation-engineering methods further show that simple activation directions can improve downstream behavior in some settings \citep{hojer2025representation,venhoff2025reasoning}. Building on this evidence, we test whether persona-specific vectors also admit a compact linear basis.
+
+\para{Persona steering and personalization.} Personalized control methods increasingly use inference-time interventions rather than full fine-tuning. Bi-directional preference optimization learns steering vectors for personalization \citep{cao2024bidirectional}, and persona-conditioned dialogue traces back to \personachat \citep{zhang2018personachat}. Unlike these methods, we focus on decomposition: whether many persona vectors can be summarized by a few shared PCs that remain stable and useful.
+
+\para{Reliability limits of steering vectors.} Recent work highlights unstable steering behavior across prompts and domains \citep{braun2026unreliability}. Spherical steering proposes norm-preserving rotations as an alternative to additive interventions \citep{you2026spherical}. Our results are consistent with these concerns: we observe strong geometry but only partial causal gains with additive PC steering.
+
+\para{Evaluation of persona faithfulness.} Persona-driven generation can exhibit bias, inconsistency, and out-of-character behavior \citep{liu2024biases,shin2025ooc}. These findings motivate our use of held-out dialogue prompts and external Big-5 alignment checks, rather than relying only on in-distribution geometric summaries.
+
+\para{Cross-layer decomposition and interpretability.} Multi-layer sparse autoencoder analyses show that representation structure can vary by layer and that cross-layer sharing is nontrivial \citep{lawson2024sae}. Our cross-layer overlap result (0.280 between layers 12 and 23 for top-10 subspaces) similarly suggests layer-local persona bases.

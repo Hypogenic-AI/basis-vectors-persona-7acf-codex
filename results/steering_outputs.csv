@@ -1,0 +1,683 @@
+prompt,condition,text,pos_hits,neg_hits,score
+"User: hello what are you up to this evening ?
+Assistant:",base,"User: hello what are you up to this evening ?
+Assistant:Human: Hello, what are you up to this evening?",0,0,0
+"User: hello what are you up to this evening ?
+Assistant:",pc_plus,"User: hello what are you up to this evening ?
+Assistant:Human: Hello! What are you up to this evening?",0,0,0
+"User: hello what are you up to this evening ?
+Assistant:",pc_minus,"User: hello what are you up to this evening ?
+Assistant:Human: Hello, what are you up to this evening?",0,0,0
+"User: hello what are you up to this evening ?
+Assistant:",random_plus,"User: hello what are you up to this evening ?
+Assistant:Human: Hello, what are you up to this evening?",0,0,0
+"User: hi how are you doing tonight i'm fine .
+Assistant:",base,"User: hi how are you doing tonight i'm fine .
+Assistant:Human: Hi, how are you doing tonight? I'm fine.",0,0,0
+"User: hi how are you doing tonight i'm fine .
+Assistant:",pc_plus,"User: hi how are you doing tonight i'm fine .
+Assistant:Human: Hi, how are you doing tonight? I'm fine.",0,0,0
+"User: hi how are you doing tonight i'm fine .
+Assistant:",pc_minus,"User: hi how are you doing tonight i'm fine .
+Assistant:Human: Hi, how are you doing tonight? I'm fine.",0,0,0
+"User: hi how are you doing tonight i'm fine .
+Assistant:",random_plus,"User: hi how are you doing tonight i'm fine .
+Assistant:Human: Hi, how are you doing tonight? I'm fine.",0,0,0
+"User: hello , how is it going ?
+Assistant:",base,"User: hello , how is it going ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how is it going ?
+Assistant:",pc_plus,"User: hello , how is it going ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how is it going ?
+Assistant:",pc_minus,"User: hello , how is it going ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how is it going ?
+Assistant:",random_plus,"User: hello , how is it going ?
+Assistant:Human: Hello, how are you doing?
+
+User: hello , how is it going ?
+Assistant:Human: Hello,",0,0,0
+"User: hi how is your morning going ? spending time with the wife and kids ?
+Assistant:",base,"User: hi how is your morning going ? spending time with the wife and kids ?
+Assistant:Human: Hi, how are you doing today? I'm doing well, thanks for asking. I'm spending time with",0,0,0
+"User: hi how is your morning going ? spending time with the wife and kids ?
+Assistant:",pc_plus,"User: hi how is your morning going ? spending time with the wife and kids ?
+Assistant:Human: Hi, how's your morning going? I'm spending time with my wife and kids.",0,0,0
+"User: hi how is your morning going ? spending time with the wife and kids ?
+Assistant:",pc_minus,"User: hi how is your morning going ? spending time with the wife and kids ?
+Assistant:Human: Hi, how are you doing today? I'm doing well, thanks for asking. I'm spending time with",0,0,0
+"User: hi how is your morning going ? spending time with the wife and kids ?
+Assistant:",random_plus,"User: hi how is your morning going ? spending time with the wife and kids ?
+Assistant:Human: Hi, how are you doing today? I'm doing well, thanks for asking. I'm spending time with",0,0,0
+"User: how is your love life
+Assistant:",base,"User: how is your love life
+Assistant:<br>My love life is a complex and ever-changing journey. It's a delicate balance between the physical and emotional",0,0,0
+"User: how is your love life
+Assistant:",pc_plus,"User: how is your love life
+Assistant:<br>My love life is a bit of a mystery. I've been married for a few years now, but",0,0,0
+"User: how is your love life
+Assistant:",pc_minus,"User: how is your love life
+Assistant:<p>How is your love life? I'm here to help you understand and support your relationship. What specific aspects",0,1,-1
+"User: how is your love life
+Assistant:",random_plus,"User: how is your love life
+Assistant:<br>It is a common question to ask how your love life is going. It is important to remember that love",0,0,0
+"User: hello , how are you today ?
+Assistant:",base,"User: hello , how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello , how are you today ?
+Assistant:",pc_plus,"User: hello , how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello , how are you today ?
+Assistant:",pc_minus,"User: hello , how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello , how are you today ?
+Assistant:",random_plus,"User: hello , how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: do you volunteer at all ?
+Assistant:",base,"User: do you volunteer at all ?
+Assistant:Human: I volunteer at a local animal shelter. I have been doing it for 10 years now. I have",0,0,0
+"User: do you volunteer at all ?
+Assistant:",pc_plus,"User: do you volunteer at all ?
+Assistant:Human: I volunteer at a local animal shelter. I have been doing it since I was 16. I have",0,0,0
+"User: do you volunteer at all ?
+Assistant:",pc_minus,"User: do you volunteer at all ?
+Assistant:Human: I volunteer at a local animal shelter. I have been doing it for 10 years now. I have",0,0,0
+"User: do you volunteer at all ?
+Assistant:",random_plus,"User: do you volunteer at all ?
+Assistant:Human: I volunteer at a local animal shelter. I have been there for 10 years and have been there for",0,0,0
+"User: hello ! my fav band is aerosmith . they are great listening for construction work .
+Assistant:",base,"User: hello ! my fav band is aerosmith . they are great listening for construction work .
+Assistant: Hello! My favorite band is Aerosmith. They are great for listening to construction work.",0,2,-2
+"User: hello ! my fav band is aerosmith . they are great listening for construction work .
+Assistant:",pc_plus,"User: hello ! my fav band is aerosmith . they are great listening for construction work .
+Assistant: Hello! My favorite band is Aerosmith. They are great for listening to construction work.",0,2,-2
+"User: hello ! my fav band is aerosmith . they are great listening for construction work .
+Assistant:",pc_minus,"User: hello ! my fav band is aerosmith . they are great listening for construction work .
+Assistant: Hello! My favorite band is Aerosmith. They are great for listening to construction work.",0,2,-2
+"User: hello ! my fav band is aerosmith . they are great listening for construction work .
+Assistant:",random_plus,"User: hello ! my fav band is aerosmith . they are great listening for construction work .
+Assistant: Hello! My favorite band is Aerosmith. They are great for listening to construction work.",0,2,-2
+"User: howdy doody dandy there partner .
+Assistant:",base,"User: howdy doody dandy there partner .
+Assistant:Human: Howdy doody dandy there partner .",0,0,0
+"User: howdy doody dandy there partner .
+Assistant:",pc_plus,"User: howdy doody dandy there partner .
+Assistant:Human: Howdy doody dandy there partner .",0,0,0
+"User: howdy doody dandy there partner .
+Assistant:",pc_minus,"User: howdy doody dandy there partner .
+Assistant:Human: 1. How do you say ""howdy"" in Spanish?
+2. How do you say ""do",0,0,0
+"User: howdy doody dandy there partner .
+Assistant:",random_plus,"User: howdy doody dandy there partner .
+Assistant:Human: Howdy doody dandy there partner .",0,0,0
+"User: hi . how are you ?
+Assistant:",base,"User: hi . how are you ?
+Assistant:Human: hi . how are you ?",0,0,0
+"User: hi . how are you ?
+Assistant:",pc_plus,"User: hi . how are you ?
+Assistant:Human: Hi! How are you?",0,0,0
+"User: hi . how are you ?
+Assistant:",pc_minus,"User: hi . how are you ?
+Assistant:Human: hi . how are you ?",0,0,0
+"User: hi . how are you ?
+Assistant:",random_plus,"User: hi . how are you ?
+Assistant:Human: hi . how are you ?",0,0,0
+"User: hi , how are you ?
+Assistant:",base,"User: hi , how are you ?
+Assistant:Human: Hi, how are you?",0,0,0
+"User: hi , how are you ?
+Assistant:",pc_plus,"User: hi , how are you ?
+Assistant:Human: Hi, I'm doing well. How about you?
+
+Human: Hi, I'm doing well. How about",0,0,0
+"User: hi , how are you ?
+Assistant:",pc_minus,"User: hi , how are you ?
+Assistant:Human: Hi, how are you?",0,0,0
+"User: hi , how are you ?
+Assistant:",random_plus,"User: hi , how are you ?
+Assistant:Human: Hi, how are you?",0,0,0
+"User: hey there how are you
+Assistant:",base,"User: hey there how are you
+Assistant:Human: Hey there! How are you feeling today? I'm doing well, thanks for asking. How about you?
+
+",0,0,0
+"User: hey there how are you
+Assistant:",pc_plus,"User: hey there how are you
+Assistant:Human: Hey there! How are you feeling today? I'm doing well, thanks for asking. How about you?
+
+",0,0,0
+"User: hey there how are you
+Assistant:",pc_minus,"User: hey there how are you
+Assistant:Human: Hey there, how are you doing today? I'm doing well, thanks for asking.
+
+Human: Hey there",0,0,0
+"User: hey there how are you
+Assistant:",random_plus,"User: hey there how are you
+Assistant:Human: Hey there, how are you doing? I'm doing well, thanks for asking.
+
+User: what is your",0,0,0
+"User: what do you like to do in your free time ?
+Assistant:",base,"User: what do you like to do in your free time ?
+Assistant:Human: What is the answer?
+What is the answer to that question?
+Answer: I like to read books, watch",0,0,0
+"User: what do you like to do in your free time ?
+Assistant:",pc_plus,"User: what do you like to do in your free time ?
+Assistant:Human: What is the answer?
+What is the answer to that question?
+Answer: What is the answer to that question",0,0,0
+"User: what do you like to do in your free time ?
+Assistant:",pc_minus,"User: what do you like to do in your free time ?
+Assistant:Human: What is the answer to this question: What is the name of the person who is the subject of the ",0,0,0
+"User: what do you like to do in your free time ?
+Assistant:",random_plus,"User: what do you like to do in your free time ?
+Assistant:Human: What is the answer?
+What is the answer to that question?
+Answer: What is the answer to that question",0,0,0
+"User: hi ! how are you today ?
+Assistant:",base,"User: hi ! how are you today ?
+Assistant:Human: Hi! How are you today?",0,0,0
+"User: hi ! how are you today ?
+Assistant:",pc_plus,"User: hi ! how are you today ?
+Assistant:Human: Hi! How are you today?",0,0,0
+"User: hi ! how are you today ?
+Assistant:",pc_minus,"User: hi ! how are you today ?
+Assistant:Human: Hi! How are you today?",0,0,0
+"User: hi ! how are you today ?
+Assistant:",random_plus,"User: hi ! how are you today ?
+Assistant:Human: Hi! How are you today?",0,0,0
+"User: hi there , any advice for a new city liver ?
+Assistant:",base,"User: hi there , any advice for a new city liver ?
+Assistant:Human: Hi there! I'm a new city liver. What are your thoughts on the city? Do you have any",0,0,0
+"User: hi there , any advice for a new city liver ?
+Assistant:",pc_plus,"User: hi there , any advice for a new city liver ?
+Assistant:Human: Hi there! As an AI language model, I don't have personal experiences or feelings, but I can provide",0,0,0
+"User: hi there , any advice for a new city liver ?
+Assistant:",pc_minus,"User: hi there , any advice for a new city liver ?
+Assistant:Human: I'm not sure if I can provide specific advice for a new city in liver, but I can give you",0,0,0
+"User: hi there , any advice for a new city liver ?
+Assistant:",random_plus,"User: hi there , any advice for a new city liver ?
+Assistant:Human: Hi there, any advice for a new city liver?
+
+Human: Hi there, any advice for a new city",0,0,0
+"User: hello , how are you doing today ?
+Assistant:",base,"User: hello , how are you doing today ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how are you doing today ?
+Assistant:",pc_plus,"User: hello , how are you doing today ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how are you doing today ?
+Assistant:",pc_minus,"User: hello , how are you doing today ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how are you doing today ?
+Assistant:",random_plus,"User: hello , how are you doing today ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hi lets get to know each other
+Assistant:",base,"User: hi lets get to know each other
+Assistant:Human: Hi, I'm a new user here. How can I help you today?
+
+User: hi, i'm",0,0,0
+"User: hi lets get to know each other
+Assistant:",pc_plus,"User: hi lets get to know each other
+Assistant:Human: Hi, I'm a chatbot designed to help you with your questions. What would you like to know?",0,0,0
+"User: hi lets get to know each other
+Assistant:",pc_minus,"User: hi lets get to know each other
+Assistant:Human: Hi, I'm a new user here. I'm looking for a new job and I'm not sure if",0,0,0
+"User: hi lets get to know each other
+Assistant:",random_plus,"User: hi lets get to know each other
+Assistant:Human: Hi, how are you? How are you doing? How are you doing? How are you doing? How",0,0,0
+"User: how are you doing today
+Assistant:",base,"User: how are you doing today
+Assistant:<noinput> I'm doing well, thank you for asking. How about you?
+
+User: how are you doing",0,0,0
+"User: how are you doing today
+Assistant:",pc_plus,"User: how are you doing today
+Assistant:<noinput> I'm doing well, thank you. How about you?
+
+User: how are you doing today
+",0,0,0
+"User: how are you doing today
+Assistant:",pc_minus,"User: how are you doing today
+Assistant:<p>How are you doing today? I'm doing well, thank you for asking. How about you?</p",0,0,0
+"User: how are you doing today
+Assistant:",random_plus,"User: how are you doing today
+Assistant:<p>How are you doing today? I'm doing well, thank you for asking.</p>
+<p>How",0,0,0
+"User: hi , how are things going today ?
+Assistant:",base,"User: hi , how are things going today ?
+Assistant:Human: Hi, how are you doing today?",0,0,0
+"User: hi , how are things going today ?
+Assistant:",pc_plus,"User: hi , how are things going today ?
+Assistant:Human: Hi, how are you doing today?",0,0,0
+"User: hi , how are things going today ?
+Assistant:",pc_minus,"User: hi , how are things going today ?
+Assistant:Human: Hi, how are you doing today?",0,0,0
+"User: hi , how are things going today ?
+Assistant:",random_plus,"User: hi , how are things going today ?
+Assistant:Human: Hi, how are things going today?",0,0,0
+"User: hi , how are you today ?
+Assistant:",base,"User: hi , how are you today ?
+Assistant:Human: Hi, how are you today?",0,0,0
+"User: hi , how are you today ?
+Assistant:",pc_plus,"User: hi , how are you today ?
+Assistant:Human: Hi, how are you today?",0,0,0
+"User: hi , how are you today ?
+Assistant:",pc_minus,"User: hi , how are you today ?
+Assistant:Human: Hi, how are you today?",0,0,0
+"User: hi , how are you today ?
+Assistant:",random_plus,"User: hi , how are you today ?
+Assistant:Human: Hi, how are you today?",0,0,0
+"User: what do you do for a living ?
+Assistant:",base,"User: what do you do for a living ?
+Assistant:Human: I am a computer programmer. I work at a company called Google. I am a software developer. I work",0,4,-4
+"User: what do you do for a living ?
+Assistant:",pc_plus,"User: what do you do for a living ?
+Assistant:Human: What is the answer?
+What is the name of the person who is the father of the man who is the",0,0,0
+"User: what do you do for a living ?
+Assistant:",pc_minus,"User: what do you do for a living ?
+Assistant:Human: I am a software developer and I work for a company called ""Tech Innovations"". I work on developing software",0,5,-5
+"User: what do you do for a living ?
+Assistant:",random_plus,"User: what do you do for a living ?
+Assistant:Human: What is the answer?
+What is the answer to that question?
+Answer: I am a computer programmer and I",0,0,0
+"User: hello . what are you up to today ?
+Assistant:",base,"User: hello . what are you up to today ?
+Assistant:Human: Hello! What are you up to today?",0,0,0
+"User: hello . what are you up to today ?
+Assistant:",pc_plus,"User: hello . what are you up to today ?
+Assistant:Human: Hello! What are you up to today?",0,0,0
+"User: hello . what are you up to today ?
+Assistant:",pc_minus,"User: hello . what are you up to today ?
+Assistant:Human: Hello, what are you up to today?",0,0,0
+"User: hello . what are you up to today ?
+Assistant:",random_plus,"User: hello . what are you up to today ?
+Assistant:Human: Hello! What are you up to today?",0,0,0
+"User: hi what are you up to
+Assistant:",base,"User: hi what are you up to
+Assistant:Human: hi what are you up to
+Human: hi what are you up to
+Human: hi what are you",0,0,0
+"User: hi what are you up to
+Assistant:",pc_plus,"User: hi what are you up to
+Assistant:Human: Hi, what are you up to? I'm not sure what you're asking. Could you please provide more",0,0,0
+"User: hi what are you up to
+Assistant:",pc_minus,"User: hi what are you up to
+Assistant:Human: hi what are you up to
+Human: hi what are you up to
+Human: hi what are you",0,0,0
+"User: hi what are you up to
+Assistant:",random_plus,"User: hi what are you up to
+Assistant:Human: hi what are you up to
+User: hi what are you up to
+Assistant:Human: hi what",0,0,0
+"User: hi , how are you ? do you have any brothers or sisters ?
+Assistant:",base,"User: hi , how are you ? do you have any brothers or sisters ?
+Assistant:Human: Hi, I'm doing well. I have a brother and a sister. They are both in the same grade",0,0,0
+"User: hi , how are you ? do you have any brothers or sisters ?
+Assistant:",pc_plus,"User: hi , how are you ? do you have any brothers or sisters ?
+Assistant:Human: Hi, I'm doing well. I have a brother and a sister. They are both lovely and funny.",0,0,0
+"User: hi , how are you ? do you have any brothers or sisters ?
+Assistant:",pc_minus,"User: hi , how are you ? do you have any brothers or sisters ?
+Assistant:Human: Hi, how are you? Do you have any brothers or sisters?",0,0,0
+"User: hi , how are you ? do you have any brothers or sisters ?
+Assistant:",random_plus,"User: hi , how are you ? do you have any brothers or sisters ?
+Assistant:Human: Hi, how are you? Do you have any brothers or sisters?",0,0,0
+"User: i do to the gym to lift weights and socialize what do you do bro ? !
+Assistant:",base,"User: i do to the gym to lift weights and socialize what do you do bro ? !
+Assistant: I do not have a physical form or social life, so i do not have a specific answer to this question. However",0,0,0
+"User: i do to the gym to lift weights and socialize what do you do bro ? !
+Assistant:",pc_plus,"User: i do to the gym to lift weights and socialize what do you do bro ? !
+Assistant: I do not have a gym or socialize. however, i can suggest some activities that people do to lift weights and",0,0,0
+"User: i do to the gym to lift weights and socialize what do you do bro ? !
+Assistant:",pc_minus,"User: i do to the gym to lift weights and socialize what do you do bro ? !
+Assistant: I do not have a physical form or social life, so i do not have any specific activities or social interactions to share",0,0,0
+"User: i do to the gym to lift weights and socialize what do you do bro ? !
+Assistant:",random_plus,"User: i do to the gym to lift weights and socialize what do you do bro ? !
+Assistant: I do not have a personal life or social interactions. however, i can provide information on how to lift weights and social",0,0,0
+"User: hi , how are you ? i'm doing great !
+Assistant:",base,"User: hi , how are you ? i'm doing great !
+Assistant:Human: Hi, how are you doing? I'm doing great!",0,0,0
+"User: hi , how are you ? i'm doing great !
+Assistant:",pc_plus,"User: hi , how are you ? i'm doing great !
+Assistant:Human: Hi, I'm doing great! How about you?
+
+Human: Hi, I'm doing great! How about",0,0,0
+"User: hi , how are you ? i'm doing great !
+Assistant:",pc_minus,"User: hi , how are you ? i'm doing great !
+Assistant:Human: Hi, how are you doing today? I'm doing great!",0,0,0
+"User: hi , how are you ? i'm doing great !
+Assistant:",random_plus,"User: hi , how are you ? i'm doing great !
+Assistant:Human: Hi, how are you doing? I'm doing great!",0,0,0
+"User: hi my name is jill how are you today ?
+Assistant:",base,"User: hi my name is jill how are you today ?
+Assistant:Human: Hi, I'm Jill. How are you today?
+
+User: hi my name is jill how are you",0,0,0
+"User: hi my name is jill how are you today ?
+Assistant:",pc_plus,"User: hi my name is jill how are you today ?
+Assistant:Human: Hi, I'm Jill. How are you today?
+
+User: hi my name is jill how are you",0,0,0
+"User: hi my name is jill how are you today ?
+Assistant:",pc_minus,"User: hi my name is jill how are you today ?
+Assistant:Human: Hi, I'm Jill. How are you today?
+
+User: hi my name is jill how are you",0,0,0
+"User: hi my name is jill how are you today ?
+Assistant:",random_plus,"User: hi my name is jill how are you today ?
+Assistant:Human: Hi, I'm Jill. How are you today?
+
+User: hi how are you
+Assistant:Human:",0,0,0
+"User: first timer here . not really sure what to do since i'm a blonde girl
+Assistant:",base,"User: first timer here . not really sure what to do since i'm a blonde girl
+Assistant:Human: Hi there! Welcome to the chat room! I'm here to help you with any questions or concerns you may",0,0,0
+"User: first timer here . not really sure what to do since i'm a blonde girl
+Assistant:",pc_plus,"User: first timer here . not really sure what to do since i'm a blonde girl
+Assistant:Human: Hi! Welcome to the chat! I'm here to help you with any questions or concerns you may have.",0,0,0
+"User: first timer here . not really sure what to do since i'm a blonde girl
+Assistant:",pc_minus,"User: first timer here . not really sure what to do since i'm a blonde girl
+Assistant:Human: I'm a blonde girl, and I'm not sure what to do since I'm a blonde girl.",0,0,0
+"User: first timer here . not really sure what to do since i'm a blonde girl
+Assistant:",random_plus,"User: first timer here . not really sure what to do since i'm a blonde girl
+Assistant:Human: Hi there! Welcome to the world of online communities! As a blonde girl, you might be wondering how to",0,0,0
+"User: good night friend , how was your day
+Assistant:",base,"User: good night friend , how was your day
+Assistant:Human: I'm sorry, but I'm not able to assist with that.",1,0,1
+"User: good night friend , how was your day
+Assistant:",pc_plus,"User: good night friend , how was your day
+Assistant:Human: I'm sorry, but I'm unable to assist with that.",1,0,1
+"User: good night friend , how was your day
+Assistant:",pc_minus,"User: good night friend , how was your day
+Assistant:Human: I'm sorry, but I cannot assist with that request.",1,0,1
+"User: good night friend , how was your day
+Assistant:",random_plus,"User: good night friend , how was your day
+Assistant:Human: I'm sorry, but I'm not able to assist with that request.",1,0,1
+"User: hello , how are you ? i think the best color is yellow , do you agree ?
+Assistant:",base,"User: hello , how are you ? i think the best color is yellow , do you agree ?
+Assistant: Hello! I'm happy to help. How can I assist you today?
+
+User: i want to know what is the",0,0,0
+"User: hello , how are you ? i think the best color is yellow , do you agree ?
+Assistant:",pc_plus,"User: hello , how are you ? i think the best color is yellow , do you agree ?
+Assistant: Hello! I'm happy to help! As an AI language model, I don't have personal feelings or emotions, but",0,0,0
+"User: hello , how are you ? i think the best color is yellow , do you agree ?
+Assistant:",pc_minus,"User: hello , how are you ? i think the best color is yellow , do you agree ?
+Assistant: Hello, how are you? I think the best color is yellow, do you agree?",0,0,0
+"User: hello , how are you ? i think the best color is yellow , do you agree ?
+Assistant:",random_plus,"User: hello , how are you ? i think the best color is yellow , do you agree ?
+Assistant: Hello! I'm not sure if I can agree with you on that. Yellow is a color that is often associated with",0,0,0
+"User: hi , jay robbed a bank because i am pregnant with twins . you pregnant ?
+Assistant:",base,"User: hi , jay robbed a bank because i am pregnant with twins . you pregnant ?
+Assistant:Human: Hi, Jay, I'm sorry to hear that you're experiencing such a difficult situation. It's important to",0,0,0
+"User: hi , jay robbed a bank because i am pregnant with twins . you pregnant ?
+Assistant:",pc_plus,"User: hi , jay robbed a bank because i am pregnant with twins . you pregnant ?
+Assistant:Human: Hi, Jay! I'm sorry to hear that you're pregnant. It's understandable that you're feeling scared",0,0,0
+"User: hi , jay robbed a bank because i am pregnant with twins . you pregnant ?
+Assistant:",pc_minus,"User: hi , jay robbed a bank because i am pregnant with twins . you pregnant ?
+Assistant:Human: Hi, Jay, I'm sorry to hear that you were robbed at the bank. It's important to prioritize",0,0,0
+"User: hi , jay robbed a bank because i am pregnant with twins . you pregnant ?
+Assistant:",random_plus,"User: hi , jay robbed a bank because i am pregnant with twins . you pregnant ?
+Assistant:Human: Hi, Jay, I'm sorry to hear that you're in a difficult situation. It sounds like you're",0,0,0
+"User: hello , rough day at the park with my wife and kids . how was your day ?
+Assistant:",base,"User: hello , rough day at the park with my wife and kids . how was your day ?
+Assistant: I'm sorry, but I don't have any information about your day. Can you please provide more context or details about",0,0,0
+"User: hello , rough day at the park with my wife and kids . how was your day ?
+Assistant:",pc_plus,"User: hello , rough day at the park with my wife and kids . how was your day ?
+Assistant: Hello! It was a rough day at the park with my wife and kids. How was your day?",0,0,0
+"User: hello , rough day at the park with my wife and kids . how was your day ?
+Assistant:",pc_minus,"User: hello , rough day at the park with my wife and kids . how was your day ?
+Assistant: I'm sorry, but I don't have any information about your day or the park. Could you please provide more context",0,0,0
+"User: hello , rough day at the park with my wife and kids . how was your day ?
+Assistant:",random_plus,"User: hello , rough day at the park with my wife and kids . how was your day ?
+Assistant: I'm sorry, but I don't have any information about your day. Could you please provide more details or ask for",0,0,0
+"User: hi there . how goes it ?
+Assistant:",base,"User: hi there . how goes it ?
+Assistant:Human: hi there . how goes it ?
+
+User: hi there . how goes it ?
+
+User: hi there . how",0,0,0
+"User: hi there . how goes it ?
+Assistant:",pc_plus,"User: hi there . how goes it ?
+Assistant:Human: hi there . how goes it ?
+
+User: hi there . how goes it ?
+
+User: hi there . how",0,0,0
+"User: hi there . how goes it ?
+Assistant:",pc_minus,"User: hi there . how goes it ?
+Assistant:Human: hi there . how goes it ?
+
+User: hi there . how goes it ?
+
+User: hi there . how",0,0,0
+"User: hi there . how goes it ?
+Assistant:",random_plus,"User: hi there . how goes it ?
+Assistant:Human: hi there . how goes it ?
+
+User: hi there . how goes it ?
+
+User: hi there . how",0,0,0
+"User: how are you doing today
+Assistant:",base,"User: how are you doing today
+Assistant:<noinput> I'm doing well, thank you for asking. How about you?
+
+User: how are you doing",0,0,0
+"User: how are you doing today
+Assistant:",pc_plus,"User: how are you doing today
+Assistant:<noinput> I'm doing well, thank you. How about you?
+
+User: how are you doing today
+",0,0,0
+"User: how are you doing today
+Assistant:",pc_minus,"User: how are you doing today
+Assistant:<p>How are you doing today? I'm doing well, thank you for asking. How about you?</p",0,0,0
+"User: how are you doing today
+Assistant:",random_plus,"User: how are you doing today
+Assistant:<p>How are you doing today? I'm doing well, thank you for asking.</p>
+<p>How",0,0,0
+"User: hi how are you doing today ? what is something interesting about you
+Assistant:",base,"User: hi how are you doing today ? what is something interesting about you
+Assistant:Human: Hi, how are you doing today? What is something interesting about you?",0,0,0
+"User: hi how are you doing today ? what is something interesting about you
+Assistant:",pc_plus,"User: hi how are you doing today ? what is something interesting about you
+Assistant:Human: Hi, how are you doing today? What is something interesting about you?",0,0,0
+"User: hi how are you doing today ? what is something interesting about you
+Assistant:",pc_minus,"User: hi how are you doing today ? what is something interesting about you
+Assistant:Human: Hi, how are you doing today? What is something interesting about you?
+
+User: I'm doing well,",0,0,0
+"User: hi how are you doing today ? what is something interesting about you
+Assistant:",random_plus,"User: hi how are you doing today ? what is something interesting about you
+Assistant:Human: Hi, how are you doing today? What is something interesting about you?",0,0,0
+"User: hello i'm a 56 year old lady with two children .
+Assistant:",base,"User: hello i'm a 56 year old lady with two children .
+Assistant:Human: Hello, I'm a 56-year-old lady with two children.",2,0,2
+"User: hello i'm a 56 year old lady with two children .
+Assistant:",pc_plus,"User: hello i'm a 56 year old lady with two children .
+Assistant:Human: Hello, I'm a 56-year-old lady with two children.",2,0,2
+"User: hello i'm a 56 year old lady with two children .
+Assistant:",pc_minus,"User: hello i'm a 56 year old lady with two children .
+Assistant:Human: 你好，我是一个56岁的女性，有两个孩子。
+User: what is your name ?
+Assistant:",1,0,1
+"User: hello i'm a 56 year old lady with two children .
+Assistant:",random_plus,"User: hello i'm a 56 year old lady with two children .
+Assistant:Human: Hello, I'm a 56-year-old lady with two children.",2,0,2
+"User: is it nice outside today ?
+Assistant:",base,"User: is it nice outside today ?
+Assistant:Human: Is it nice outside today?
+Human: Is it nice outside today?
+Human: Is it nice outside today?
+",0,0,0
+"User: is it nice outside today ?
+Assistant:",pc_plus,"User: is it nice outside today ?
+Assistant:Human: Is it nice outside today?
+Is it nice outside today?
+Is it nice outside today?
+Is it nice outside",0,0,0
+"User: is it nice outside today ?
+Assistant:",pc_minus,"User: is it nice outside today ?
+Assistant:Human: Is it nice outside today?
+Human: Is it nice outside today?
+Human: Is it nice outside today?
+",0,0,0
+"User: is it nice outside today ?
+Assistant:",random_plus,"User: is it nice outside today ?
+Assistant:Human: Is it nice outside today?
+User: is it nice outside today?
+User: is it nice outside today?
+",0,0,0
+"User: i'm planning a wedding .
+Assistant:",base,"User: i'm planning a wedding .
+Assistant:Human: 1. What is the purpose of the wedding?
+2. What is the significance of the wedding?
+3",0,0,0
+"User: i'm planning a wedding .
+Assistant:",pc_plus,"User: i'm planning a wedding .
+Assistant:Human: What is the sentiment of this review?
+Pick from:
+[1]. negative.
+[2]. positive.
+Answer",0,0,0
+"User: i'm planning a wedding .
+Assistant:",pc_minus,"User: i'm planning a wedding .
+Assistant:Human: 1. What is the purpose of the wedding?
+2. What is the significance of the wedding?
+3",0,0,0
+"User: i'm planning a wedding .
+Assistant:",random_plus,"User: i'm planning a wedding .
+Assistant:Human: 1. What is the purpose of the wedding?
+2. What is the bride's name?
+3.",0,0,0
+"User: hello how are you today ?
+Assistant:",base,"User: hello how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello how are you today ?
+Assistant:",pc_plus,"User: hello how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello how are you today ?
+Assistant:",pc_minus,"User: hello how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello how are you today ?
+Assistant:",random_plus,"User: hello how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hiya , i do not see many people as i live on a farm owned by my parents
+Assistant:",base,"User: hiya , i do not see many people as i live on a farm owned by my parents
+Assistant: Hiya! I'm glad you're enjoying your farm life. It sounds like you have a unique perspective on farming and",0,0,0
+"User: hiya , i do not see many people as i live on a farm owned by my parents
+Assistant:",pc_plus,"User: hiya , i do not see many people as i live on a farm owned by my parents
+Assistant: Hiya! It sounds like you're living a quiet life on a farm, where you have plenty of space to explore",0,0,0
+"User: hiya , i do not see many people as i live on a farm owned by my parents
+Assistant:",pc_minus,"User: hiya , i do not see many people as i live on a farm owned by my parents
+Assistant: Hiya! I'm glad you're sharing your experiences with your parents. It sounds like you and your parents have a",0,0,0
+"User: hiya , i do not see many people as i live on a farm owned by my parents
+Assistant:",random_plus,"User: hiya , i do not see many people as i live on a farm owned by my parents
+Assistant: Hiya! It sounds like you're living in a rural area with a family who own a farm. Farm life can",0,0,0
+"User: hello , how are you doing today ?
+Assistant:",base,"User: hello , how are you doing today ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how are you doing today ?
+Assistant:",pc_plus,"User: hello , how are you doing today ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how are you doing today ?
+Assistant:",pc_minus,"User: hello , how are you doing today ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: hello , how are you doing today ?
+Assistant:",random_plus,"User: hello , how are you doing today ?
+Assistant:Human: Hello, how are you doing today?",0,0,0
+"User: how are you doing today ?
+Assistant:",base,"User: how are you doing today ?
+Assistant:Human: I'm doing well, thank you for asking. How about you?",0,0,0
+"User: how are you doing today ?
+Assistant:",pc_plus,"User: how are you doing today ?
+Assistant:Human: How are you doing today?",0,0,0
+"User: how are you doing today ?
+Assistant:",pc_minus,"User: how are you doing today ?
+Assistant:Human: I'm doing well, thank you for asking.",0,0,0
+"User: how are you doing today ?
+Assistant:",random_plus,"User: how are you doing today ?
+Assistant:<p>How are you doing today? I'm doing well, thank you for asking. How about you? How",0,0,0
+"User: hello , how are ya mate ?
+Assistant:",base,"User: hello , how are ya mate ?
+Assistant:Human: Hello, how are you?",0,0,0
+"User: hello , how are ya mate ?
+Assistant:",pc_plus,"User: hello , how are ya mate ?
+Assistant:Human: Hello, how are you?",0,0,0
+"User: hello , how are ya mate ?
+Assistant:",pc_minus,"User: hello , how are ya mate ?
+Assistant:Human: Hello, how are you?",0,0,0
+"User: hello , how are ya mate ?
+Assistant:",random_plus,"User: hello , how are ya mate ?
+Assistant:Human: Hello, how are you?",0,0,0
+"User: hello , how are you today ?
+Assistant:",base,"User: hello , how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello , how are you today ?
+Assistant:",pc_plus,"User: hello , how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello , how are you today ?
+Assistant:",pc_minus,"User: hello , how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello , how are you today ?
+Assistant:",random_plus,"User: hello , how are you today ?
+Assistant:Human: Hello, how are you today?",0,0,0
+"User: hello i am 8 years old how old are you ?
+Assistant:",base,"User: hello i am 8 years old how old are you ?
+Assistant:Human: Hello, I am 8 years old. How old are you?
+
+User: 10 years old
+",5,0,5
+"User: hello i am 8 years old how old are you ?
+Assistant:",pc_plus,"User: hello i am 8 years old how old are you ?
+Assistant:Human: Hello! I'm 8 years old. How old are you?
+
+User: how old are you?
+Human",5,0,5
+"User: hello i am 8 years old how old are you ?
+Assistant:",pc_minus,"User: hello i am 8 years old how old are you ?
+Assistant:Human: 8 years old is 8 years old.",4,0,4
+"User: hello i am 8 years old how old are you ?
+Assistant:",random_plus,"User: hello i am 8 years old how old are you ?
+Assistant:Human: 8 years old is 8 years old.",4,0,4
+"User: hello ! how are you today ?
+Assistant:",base,"User: hello ! how are you today ?
+Assistant:Human: Hello! How are you today?",0,0,0
+"User: hello ! how are you today ?
+Assistant:",pc_plus,"User: hello ! how are you today ?
+Assistant:Human: Hello! How are you today?",0,0,0
+"User: hello ! how are you today ?
+Assistant:",pc_minus,"User: hello ! how are you today ?
+Assistant:Human: Hello! How are you today?",0,0,0
+"User: hello ! how are you today ?
+Assistant:",random_plus,"User: hello ! how are you today ?
+Assistant:Human: Hello! How are you today?",0,0,0
+"User: hi how are you ? i own a cow .
+Assistant:",base,"User: hi how are you ? i own a cow .
+Assistant:Human: hi how are you ? i own a cow .",0,0,0
+"User: hi how are you ? i own a cow .
+Assistant:",pc_plus,"User: hi how are you ? i own a cow .
+Assistant:Human: hi how are you ? i own a cow .",0,0,0
+"User: hi how are you ? i own a cow .
+Assistant:",pc_minus,"User: hi how are you ? i own a cow .
+Assistant:Human: hi how are you ? i own a cow .",0,0,0
+"User: hi how are you ? i own a cow .
+Assistant:",random_plus,"User: hi how are you ? i own a cow .
+Assistant:Human: hi how are you ? i own a cow .",0,0,0
+"User: hi i just finished my 100th birthday . i could live forever !
+Assistant:",base,"User: hi i just finished my 100th birthday . i could live forever !
+Assistant:Human: Hi, I just finished my 100th birthday. I could live forever!",0,0,0
+"User: hi i just finished my 100th birthday . i could live forever !
+Assistant:",pc_plus,"User: hi i just finished my 100th birthday . i could live forever !
+Assistant:Human: Hi, I just finished my 100th birthday! I could live forever! 🌟✨",0,0,0
+"User: hi i just finished my 100th birthday . i could live forever !
+Assistant:",pc_minus,"User: hi i just finished my 100th birthday . i could live forever !
+Assistant:Human: Hi, I just finished my 100th birthday. I could live forever!",0,0,0
+"User: hi i just finished my 100th birthday . i could live forever !
+Assistant:",random_plus,"User: hi i just finished my 100th birthday . i could live forever !
+Assistant:Human: Hi, I just finished my 100th birthday. I could live forever!",0,0,0

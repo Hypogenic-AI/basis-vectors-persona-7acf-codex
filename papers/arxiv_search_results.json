@@ -1,0 +1,247 @@
+[
+  {
+    "id": "2406.00045v2",
+    "title": "Personalized Steering of Large Language Models: Versatile Steering Vectors Through Bi-directional Preference Optimization",
+    "authors": [
+      "Yuanpu Cao",
+      "Tianrong Zhang",
+      "Bochuan Cao",
+      "Ziyi Yin",
+      "Lu Lin",
+      "Fenglong Ma",
+      "Jinghui Chen"
+    ],
+    "year": 2024,
+    "published": "2024-05-28T05:10:40+00:00",
+    "summary": "Researchers have been studying approaches to steer the behavior of Large Language Models (LLMs) and build personalized LLMs tailored for various applications. While fine-tuning seems to be a direct solution, it requires substantial computational resources and may significantly affect the utility of the original LLM. Recent endeavors have introduced more lightweight strategies, focusing on extracting \"steering vectors\" to guide the model's output toward desired behaviors by adjusting activations within specific layers of the LLM's transformer architecture. However, such steering vectors are directly extracted from the activations of human preference data and thus often lead to suboptimal results and occasional failures, especially in alignment-related scenarios. This work proposes an innovative approach that could produce more effective steering vectors through bi-directional preference optimization. Our method is designed to allow steering vectors to directly influence the generation probability of contrastive human preference data pairs, thereby offering a more precise representation of the target behavior. By carefully adjusting the direction and magnitude of the steering vector, we enabled personalized control over the desired behavior across a spectrum of intensities. Extensive experimentation across various open-ended generation tasks, particularly focusing on steering AI personas, has validated the efficacy of our approach. Moreover, we comprehensively investigate critical alignment-concerning scenarios, such as managing truthfulness, mitigating hallucination, and addressing jailbreaking attacks. Remarkably, our method can still demonstrate outstanding steering effectiveness across these scenarios. Furthermore, we showcase the transferability of our steering vectors across different models/LoRAs and highlight the synergistic benefits of applying multiple vectors simultaneously.",
+    "pdf_url": "https://arxiv.org/pdf/2406.00045v2",
+    "entry_id": "http://arxiv.org/abs/2406.00045v2",
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2503.21676v2",
+    "title": "How do language models learn facts? Dynamics, curricula and hallucinations",
+    "authors": [
+      "Nicolas Zucchet",
+      "J\u00f6rg Bornschein",
+      "Stephanie Chan",
+      "Andrew Lampinen",
+      "Razvan Pascanu",
+      "Soham De"
+    ],
+    "year": 2025,
+    "published": "2025-03-27T16:43:45+00:00",
+    "summary": "Large language models accumulate vast knowledge during pre-training, yet the dynamics governing this acquisition remain poorly understood. This work investigates the learning dynamics of language models on a synthetic factual recall task, uncovering three key findings: First, language models learn in three phases, exhibiting a performance plateau before acquiring precise factual knowledge. Mechanistically, this plateau coincides with the formation of attention-based circuits that support recall. Second, the training data distribution significantly impacts learning dynamics, as imbalanced distributions lead to shorter plateaus. Finally, hallucinations emerge simultaneously with knowledge, and integrating new knowledge into the model through fine-tuning is challenging, as it quickly corrupts its existing parametric memories. Our results emphasize the importance of data distribution in knowledge acquisition and suggest novel data scheduling strategies to accelerate neural network training.",
+    "pdf_url": "https://arxiv.org/pdf/2503.21676v2",
+    "entry_id": "http://arxiv.org/abs/2503.21676v2",
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ],
+    "query_hits": 3
+  },
+  {
+    "id": "2409.02228v1",
+    "title": "Unforgettable Generalization in Language Models",
+    "authors": [
+      "Eric Zhang",
+      "Leshem Chosen",
+      "Jacob Andreas"
+    ],
+    "year": 2024,
+    "published": "2024-09-03T18:55:54+00:00",
+    "summary": "When language models (LMs) are trained to forget (or \"unlearn'') a skill, how precisely does their behavior change? We study the behavior of transformer LMs in which tasks have been forgotten via fine-tuning on randomized labels. Such LMs learn to generate near-random predictions for individual examples in the \"training'' set used for forgetting. Across tasks, however, LMs exhibit extreme variability in whether LM predictions change on examples outside the training set. In some tasks (like entailment classification), forgetting generalizes robustly, and causes models to produce uninformative predictions on new task instances; in other tasks (like physical commonsense reasoning and scientific question answering) forgetting affects only the training examples, and models continue to perform the \"forgotten'' task accurately even for examples very similar to those that appeared in the training set. Dataset difficulty is not predictive of whether a behavior can be forgotten; instead, generalization in forgetting is (weakly) predicted by the confidence of LMs' initial task predictions and the variability of LM representations of training data, with low confidence and low variability both associated with greater generalization. Perhaps most surprisingly, random-label forgetting appears to be somewhat insensitive to the contents of the training set: for example, models trained on science questions with random labels continue to answer other science questions accurately, but begin to produce random labels on entailment classification tasks. Finally, we show that even generalizable forgetting is shallow: linear probes trained on LMs' representations can still perform tasks reliably after forgetting. Our results highlight the difficulty and unpredictability of performing targeted skill removal from models via fine-tuning.",
+    "pdf_url": "https://arxiv.org/pdf/2409.02228v1",
+    "entry_id": "http://arxiv.org/abs/2409.02228v1",
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ],
+    "query_hits": 2
+  },
+  {
+    "id": "2409.04185v3",
+    "title": "Residual Stream Analysis with Multi-Layer SAEs",
+    "authors": [
+      "Tim Lawson",
+      "Lucy Farnik",
+      "Conor Houghton",
+      "Laurence Aitchison"
+    ],
+    "year": 2024,
+    "published": "2024-09-06T11:01:55+00:00",
+    "summary": "Sparse autoencoders (SAEs) are a promising approach to interpreting the internal representations of transformer language models. However, SAEs are usually trained separately on each transformer layer, making it difficult to use them to study how information flows across layers. To solve this problem, we introduce the multi-layer SAE (MLSAE): a single SAE trained on the residual stream activation vectors from every transformer layer. Given that the residual stream is understood to preserve information across layers, we expected MLSAE latents to 'switch on' at a token position and remain active at later layers. Interestingly, we find that individual latents are often active at a single layer for a given token or prompt, but the layer at which an individual latent is active may differ for different tokens or prompts. We quantify these phenomena by defining a distribution over layers and considering its variance. We find that the variance of the distributions of latent activations over layers is about two orders of magnitude greater when aggregating over tokens compared with a single token. For larger underlying models, the degree to which latents are active at multiple layers increases, which is consistent with the fact that the residual stream activation vectors at adjacent layers become more similar. Finally, we relax the assumption that the residual stream basis is the same at every layer by applying pre-trained tuned-lens transformations, but our findings remain qualitatively similar. Our results represent a new approach to understanding how representations change as they flow through transformers. We release our code to train and analyze MLSAEs at https://github.com/tim-lawson/mlsae.",
+    "pdf_url": "https://arxiv.org/pdf/2409.04185v3",
+    "entry_id": "http://arxiv.org/abs/2409.04185v3",
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2602.08169v1",
+    "title": "Spherical Steering: Geometry-Aware Activation Rotation for Language Models",
+    "authors": [
+      "Zejia You",
+      "Chunyuan Deng",
+      "Hanjie Chen"
+    ],
+    "year": 2026,
+    "published": "2026-02-09T00:15:47+00:00",
+    "summary": "Inference-time steering has emerged as a promising paradigm for controlling language models (LMs) without the cost of retraining. However, standard approaches typically rely on activation addition, a geometric operation that inevitably alters the magnitude of hidden representations. This raises concerns about representation collapse and degradation of open-ended generation capabilities. In this work, we explore Spherical Steering, a training-free primitive that resolves this trade-off through activation rotation. Rather than shifting activations with a fixed vector, our method rotates them along a geodesic toward a target direction, guiding the activation toward the target concept while preserving the integrity of the signal. To further enhance adaptivity, we incorporate a confidence gate that dynamically modulates steering strength based on input uncertainty. Extensive experiments across multiple-choice benchmarks demonstrate that Spherical Steering significantly outperforms addition-based baselines (notably by +10% on TruthfulQA, COPA, and Storycloze), while simultaneously maintaining the model's general open-ended generation quality. This work highlights the value of geometric consistency, suggesting that norm-preserving rotation is a robust and effective primitive for precise inference-time control.",
+    "pdf_url": "https://arxiv.org/pdf/2602.08169v1",
+    "entry_id": "http://arxiv.org/abs/2602.08169v1",
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2602.17881v1",
+    "title": "Understanding Unreliability of Steering Vectors in Language Models: Geometric Predictors and the Limits of Linear Approximations",
+    "authors": [
+      "Joschka Braun"
+    ],
+    "year": 2026,
+    "published": "2026-02-19T22:37:05+00:00",
+    "summary": "Steering vectors are a lightweight method for controlling language model behavior by adding a learned bias to the activations at inference time. Although effective on average, steering effect sizes vary across samples and are unreliable for many target behaviors. In my thesis, I investigate why steering reliability differs across behaviors and how it is impacted by steering vector training data. First, I find that higher cosine similarity between training activation differences predicts more reliable steering. Second, I observe that behavior datasets where positive and negative activations are better separated along the steering direction are more reliably steerable. Finally, steering vectors trained on different prompt variations are directionally distinct, yet perform similarly well and exhibit correlated efficacy across datasets. My findings suggest that steering vectors are unreliable when the latent target behavior representation is not effectively approximated by the linear steering direction. Taken together, these insights offer a practical diagnostic for steering unreliability and motivate the development of more robust steering methods that explicitly account for non-linear latent behavior representations.",
+    "pdf_url": "https://arxiv.org/pdf/2602.17881v1",
+    "entry_id": "http://arxiv.org/abs/2602.17881v1",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2509.12065v1",
+    "title": "Steering Language Models in Multi-Token Generation: A Case Study on Tense and Aspect",
+    "authors": [
+      "Alina Klerings",
+      "Jannik Brinkmann",
+      "Daniel Ruffinelli",
+      "Simone Ponzetto"
+    ],
+    "year": 2025,
+    "published": "2025-09-15T15:48:09+00:00",
+    "summary": "Large language models (LLMs) are able to generate grammatically well-formed text, but how do they encode their syntactic knowledge internally? While prior work has focused largely on binary grammatical contrasts, in this work, we study the representation and control of two multidimensional hierarchical grammar phenomena - verb tense and aspect - and for each, identify distinct, orthogonal directions in residual space using linear discriminant analysis. Next, we demonstrate causal control over both grammatical features through concept steering across three generation tasks. Then, we use these identified features in a case study to investigate factors influencing effective steering in multi-token generation. We find that steering strength, location, and duration are crucial parameters for reducing undesirable side effects such as topic shift and degeneration. Our findings suggest that models encode tense and aspect in structurally organized, human-like ways, but effective control of such features during generation is sensitive to multiple factors and requires manual tuning or automated optimization.",
+    "pdf_url": "https://arxiv.org/pdf/2509.12065v1",
+    "entry_id": "http://arxiv.org/abs/2509.12065v1",
+    "categories": [
+      "cs.CL"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2504.19483v1",
+    "title": "Improving Reasoning Performance in Large Language Models via Representation Engineering",
+    "authors": [
+      "Bertram H\u00f8jer",
+      "Oliver Jarvis",
+      "Stefan Heinrich"
+    ],
+    "year": 2025,
+    "published": "2025-04-28T04:58:43+00:00",
+    "summary": "Recent advancements in large language models (LLMs) have resulted in increasingly anthropomorphic language concerning the ability of LLMs to reason. Whether reasoning in LLMs should be understood to be inherently different is, however, widely debated. We propose utilizing a representation engineering approach wherein model activations are read from the residual stream of an LLM when processing a reasoning task. The activations are used to derive a control vector that is applied to the model as an inference-time intervention, modulating the representational space of the model, to improve performance on the specified task. We publish the code for deriving control vectors and analyzing model representations. The method allows us to improve performance on reasoning benchmarks and assess how control vectors influence the final logit distribution of a model via metrics such as KL divergence and entropy. We apply control vectors to Mistral-7B-Instruct and a range of Pythia models on an inductive, a deductive and mathematical reasoning task. We show that an LLM can, to a certain degree, be controlled to improve its perceived reasoning ability by modulating activations. The intervention is dependent upon the ability to reliably extract the model's typical state when correctly solving a task. Our results suggest that reasoning performance can be modulated in the same manner as other information-processing tasks performed by LLMs and demonstrate that we are capable of improving performance on specific tasks via a simple intervention on the residual stream with no additional training.",
+    "pdf_url": "https://arxiv.org/pdf/2504.19483v1",
+    "entry_id": "http://arxiv.org/abs/2504.19483v1",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2405.15943v3",
+    "title": "Transformers represent belief state geometry in their residual stream",
+    "authors": [
+      "Adam S. Shai",
+      "Sarah E. Marzen",
+      "Lucas Teixeira",
+      "Alexander Gietelink Oldenziel",
+      "Paul M. Riechers"
+    ],
+    "year": 2024,
+    "published": "2024-05-24T21:14:10+00:00",
+    "summary": "What computational structure are we building into large language models when we train them on next-token prediction? Here, we present evidence that this structure is given by the meta-dynamics of belief updating over hidden states of the data-generating process. Leveraging the theory of optimal prediction, we anticipate and then find that belief states are linearly represented in the residual stream of transformers, even in cases where the predicted belief state geometry has highly nontrivial fractal structure. We investigate cases where the belief state geometry is represented in the final residual stream or distributed across the residual streams of multiple layers, providing a framework to explain these observations. Furthermore we demonstrate that the inferred belief states contain information about the entire future, beyond the local next-token prediction that the transformers are explicitly trained on. Our work provides a general framework connecting the structure of training data to the geometric structure of activations inside transformers.",
+    "pdf_url": "https://arxiv.org/pdf/2405.15943v3",
+    "entry_id": "http://arxiv.org/abs/2405.15943v3",
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2601.16466v1",
+    "title": "Persona Jailbreaking in Large Language Models",
+    "authors": [
+      "Jivnesh Sandhan",
+      "Fei Cheng",
+      "Tushar Sandhan",
+      "Yugo Murawaki"
+    ],
+    "year": 2026,
+    "published": "2026-01-23T05:51:35+00:00",
+    "summary": "Large Language Models (LLMs) are increasingly deployed in domains such as education, mental health and customer support, where stable and consistent personas are critical for reliability. Yet, existing studies focus on narrative or role-playing tasks and overlook how adversarial conversational history alone can reshape induced personas. Black-box persona manipulation remains unexplored, raising concerns for robustness in realistic interactions. In response, we introduce the task of persona editing, which adversarially steers LLM traits through user-side inputs under a black-box, inference-only setting. To this end, we propose PHISH (Persona Hijacking via Implicit Steering in History), the first framework to expose a new vulnerability in LLM safety that embeds semantically loaded cues into user queries to gradually induce reverse personas. We also define a metric to quantify attack success. Across 3 benchmarks and 8 LLMs, PHISH predictably shifts personas, triggers collateral changes in correlated traits, and exhibits stronger effects in multi-turn settings. In high-risk domains mental health, tutoring, and customer support, PHISH reliably manipulates personas, validated by both human and LLM-as-Judge evaluations. Importantly, PHISH causes only a small reduction in reasoning benchmark performance, leaving overall utility largely intact while still enabling significant persona manipulation. While current guardrails offer partial protection, they remain brittle under sustained attack. Our findings expose new vulnerabilities in personas and highlight the need for context-resilient persona in LLMs. Our codebase and dataset is available at: https://github.com/Jivnesh/PHISH",
+    "pdf_url": "https://arxiv.org/pdf/2601.16466v1",
+    "entry_id": "http://arxiv.org/abs/2601.16466v1",
+    "categories": [
+      "cs.CL"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2503.15406v2",
+    "title": "Visual Persona: Foundation Model for Full-Body Human Customization",
+    "authors": [
+      "Jisu Nam",
+      "Soowon Son",
+      "Zhan Xu",
+      "Jing Shi",
+      "Difan Liu",
+      "Feng Liu",
+      "Aashish Misraa",
+      "Seungryong Kim",
+      "Yang Zhou"
+    ],
+    "year": 2025,
+    "published": "2025-03-19T16:45:47+00:00",
+    "summary": "We introduce Visual Persona, a foundation model for text-to-image full-body human customization that, given a single in-the-wild human image, generates diverse images of the individual guided by text descriptions. Unlike prior methods that focus solely on preserving facial identity, our approach captures detailed full-body appearance, aligning with text descriptions for body structure and scene variations. Training this model requires large-scale paired human data, consisting of multiple images per individual with consistent full-body identities, which is notoriously difficult to obtain. To address this, we propose a data curation pipeline leveraging vision-language models to evaluate full-body appearance consistency, resulting in Visual Persona-500K, a dataset of 580k paired human images across 100k unique identities. For precise appearance transfer, we introduce a transformer encoder-decoder architecture adapted to a pre-trained text-to-image diffusion model, which augments the input image into distinct body regions, encodes these regions as local appearance features, and projects them into dense identity embeddings independently to condition the diffusion model for synthesizing customized images. Visual Persona consistently surpasses existing approaches, generating high-quality, customized images from in-the-wild inputs. Extensive ablation studies validate design choices, and we demonstrate the versatility of Visual Persona across various downstream tasks.",
+    "pdf_url": "https://arxiv.org/pdf/2503.15406v2",
+    "entry_id": "http://arxiv.org/abs/2503.15406v2",
+    "categories": [
+      "cs.CV"
+    ],
+    "query_hits": 1
+  },
+  {
+    "id": "2506.18167v4",
+    "title": "Understanding Reasoning in Thinking Language Models via Steering Vectors",
+    "authors": [
+      "Constantin Venhoff",
+      "Iv\u00e1n Arcuschin",
+      "Philip Torr",
+      "Arthur Conmy",
+      "Neel Nanda"
+    ],
+    "year": 2025,
+    "published": "2025-06-22T20:45:26+00:00",
+    "summary": "Recent advances in large language models (LLMs) have led to the development of thinking language models that generate extensive internal reasoning chains before producing responses. While these models achieve improved performance, controlling their reasoning processes remains challenging. This work presents a steering approach for thinking LLMs by analyzing and manipulating specific reasoning behaviors in DeepSeek-R1-Distill models. Through a systematic experiment on 500 tasks across 10 diverse categories, we identify several reasoning behaviors exhibited by thinking models, including expressing uncertainty, generating examples for hypothesis validation, and backtracking in reasoning chains. We demonstrate that these behaviors are mediated by linear directions in the model's activation space and can be controlled using steering vectors. By extracting and applying these vectors, we provide a method to modulate specific aspects of the model's reasoning process, such as its tendency to backtrack or express uncertainty. Our approach offers practical tools for steering reasoning processes in thinking models in a controlled and interpretable manner. We validate our steering method using three DeepSeek-R1-Distill models, demonstrating consistent control across different model architectures.",
+    "pdf_url": "https://arxiv.org/pdf/2506.18167v4",
+    "entry_id": "http://arxiv.org/abs/2506.18167v4",
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ],
+    "query_hits": 1
+  }
+]

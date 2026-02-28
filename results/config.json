@@ -1,0 +1,12 @@
+{
+  "seed": 42,
+  "model_name": "Qwen/Qwen2.5-0.5B",
+  "persona_samples": 800,
+  "steering_eval_prompts": 48,
+  "trait_samples": 800,
+  "max_length_extract": 128,
+  "max_new_tokens": 24,
+  "batch_size": 64,
+  "pca_components": 20,
+  "steering_alpha": 8.0
+}

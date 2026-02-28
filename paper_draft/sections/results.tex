@@ -1,0 +1,49 @@
+\section{Results}
+\label{sec:results}
+
+\para{Overview.} We report geometry, stability, causal steering, and external trait alignment. Across analyses, we see a consistent pattern: strong low-rank structure but only partial behavioral leverage from top PCs.
+
+\subsection{Low-Rank Geometry and Stability}
+
+\input{tables/geometry_results}
+
+\Figref{fig:scree} shows a steep early eigenvalue spectrum, and \tabref{tab:geometry} quantifies the effect: top-10 PCs explain 57.14\% variance and top-20 explain 70.06\%. This is far above the random 10D basis variance ratio (0.0113), supporting H1 (low-dimensional structure). Subspace overlap across bootstrap splits is high (0.9050 $\pm$ 0.0163), supporting H4 (within-layer stability).
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/pca_scree.png}
+    \caption{PCA scree plot for persona vectors at layer 23. The first components capture most variance, indicating strong low-rank structure.}
+    \label{fig:scree}
+\end{figure}
+
+Cross-layer transfer is weaker: top-10 overlap between layers 12 and 23 is 0.2802. This suggests persona bases are at least partly layer-specific.
+
+\subsection{Causal Steering Effects}
+
+Condition means show directional separation in lexical steering score: Base $=0.0417$, \pcplus $=0.1250$, \pcminus $=-0.0417$, and \randplus $=0.1042$. \Figref{fig:boxplot} visualizes this spread.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/steering_scores_boxplot.png}
+    \caption{Distribution of lexical steering scores by intervention condition. \pcminus shifts downward relative to base; \pcplus does not clearly separate from random steering.}
+    \label{fig:boxplot}
+\end{figure}
+
+\input{tables/steering_stats}
+
+Directional Wilcoxon tests (	abref{tab:steering}) show one significant result: \pcminus vs base ($p=0.0228$, $d=-0.309$). By contrast, \pcplus is not significant against base or \randplus ($p=0.1587$ in both tests). This partially supports H2 (causal usefulness) but fails to show robust advantage over random positive steering.
+
+\subsection{External Big-5 Alignment}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/trait_pc_heatmap.png}
+    \caption{Correlation heatmap between PC1--PC5 projections and Big-5 labels on \mypersonality. Correlations are uniformly small.}
+    \label{fig:heatmap}
+\end{figure}
+
+Trait alignment is weak. No PC--trait correlation survives BH-FDR correction, and the maximum absolute raw correlation is $|r|=0.0918$. Therefore H3 is not supported in this setup.
+
+\subsection{Failure Patterns}
+
+Manual inspection of generation rows identifies three recurring issues: (1) generic fallback completions reduce lexical sensitivity, (2) prompt echoing limits persona expression, and (3) semantic persona shifts can occur without lexicon hits, which lowers measured score gains.

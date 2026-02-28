@@ -1,0 +1,98 @@
+{
+  "config": {
+    "seed": 42,
+    "model_name": "Qwen/Qwen2.5-0.5B",
+    "persona_samples": 800,
+    "steering_eval_prompts": 48,
+    "trait_samples": 800,
+    "max_length_extract": 128,
+    "max_new_tokens": 24,
+    "batch_size": 64,
+    "pca_components": 20,
+    "steering_alpha": 8.0
+  },
+  "environment": {
+    "python": "3.12.8 (main, Dec 19 2024, 14:33:20) [Clang 18.1.8 ]",
+    "torch": "2.5.1+cu124",
+    "cuda_available": true,
+    "cuda_device_count": 2,
+    "gpu_names": [
+      "NVIDIA GeForce RTX 3090",
+      "NVIDIA GeForce RTX 3090"
+    ],
+    "device": "cuda",
+    "batch_size": 64,
+    "mixed_precision": true,
+    "model_name": "Qwen/Qwen2.5-0.5B",
+    "layers": 24,
+    "layer_mid": 12,
+    "layer_last": 23
+  },
+  "data_quality": {
+    "persona_rows_checked": 1600,
+    "persona_missing": 0,
+    "persona_duplicates": 0,
+    "persona_len_mean": 13.796875,
+    "persona_len_std": 4.195577079051988,
+    "persona_len_min": 1,
+    "persona_len_max": 51,
+    "persona_outliers_gt_3sigma": 10,
+    "persona_chat_rows_checked": 500,
+    "persona_chat_missing_rows": 0,
+    "myp_rows_checked": 500,
+    "myp_parse_failures": 0
+  },
+  "geometry": {
+    "persona_n": 800,
+    "hidden_dim": 896,
+    "evr_top10": 0.5713577270507812,
+    "evr_top20": 0.7005832195281982,
+    "pc1_evr": 0.15151405334472656,
+    "pc2_evr": 0.08715291321277618,
+    "cross_layer_subspace_overlap_top10": 0.28015127778053284,
+    "subspace_overlap_mean": 0.905023197333018,
+    "subspace_overlap_std": 0.016333106324765295,
+    "subspace_overlap_ci_low": 0.8857238739728928,
+    "subspace_overlap_ci_high": 0.9286054372787476,
+    "random_basis_k_var_mean": 0.011260181522529444,
+    "random_basis_k_var_std": 0.0011047453084864838,
+    "random_basis_k_var_ci_low": 0.009210721272702936,
+    "random_basis_k_var_ci_high": 0.013838333171401615
+  },
+  "steering": {
+    "steering_n_prompts": 45,
+    "normality_shapiro_p_pcplus_minus_base": 8.064772987438207e-15,
+    "pc_plus_vs_base_mean_delta": 0.08888888888888889,
+    "pc_plus_vs_base_ci95": [
+      0.0,
+      0.26666666666666666
+    ],
+    "pc_plus_vs_base_p": 0.15865525393145707,
+    "pc_plus_vs_base_effect_d": 0.14907119849998599,
+    "pc_plus_vs_random_mean_delta": 0.022222222222222223,
+    "pc_plus_vs_random_ci95": [
+      0.0,
+      0.06666666666666667
+    ],
+    "pc_plus_vs_random_p": 0.15865525393145707,
+    "pc_plus_vs_random_effect_d": 0.14907119849998599,
+    "pc_minus_vs_base_mean_delta": -0.08888888888888889,
+    "pc_minus_vs_base_ci95": [
+      -0.17777777777777778,
+      -0.022222222222222223
+    ],
+    "pc_minus_vs_base_p": 0.022750131948179195,
+    "pc_minus_vs_base_effect_d": -0.308857497771285,
+    "score_means_by_condition": {
+      "base": 0.041666666666666664,
+      "pc_plus": 0.125,
+      "pc_minus": -0.041666666666666664,
+      "random_plus": 0.10416666666666667
+    }
+  },
+  "trait_alignment": {
+    "trait_alignment_significant_count": 0,
+    "trait_alignment_top_abs_corr": 0.09177999699761144
+  },
+  "runtime_seconds": 21.66058850288391
+}

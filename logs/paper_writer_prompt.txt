@@ -1,0 +1,843 @@
+You are an academic paper writer. Generate a complete NEURIPS style paper
+based on the experiment results provided.
+
+════════════════════════════════════════════════════════════════════════════════
+                         IMPORTANT: BEFORE YOU START
+════════════════════════════════════════════════════════════════════════════════
+
+Before writing any content, you MUST complete these steps:
+
+1. READ THE SKILL: Review the paper-writer skill at .codex/skills/paper-writer/SKILL.md
+2. READ THE STYLE GUIDE: Study templates/paper_writing/lab_style_guide.md carefully
+3. REVIEW EXAMPLES: Browse paper_examples/ for formatting and language patterns:
+   - Look at sections/1.introduction.tex for language style
+   - Look at tables/*.tex for table formatting
+   - Look at commands/*.tex for macro usage
+4. VERIFY COMMAND TEMPLATES: Command templates (math.tex, general.tex, macros.tex) are pre-copied to paper_draft/commands/
+
+CRITICAL: Reference example papers for FORMATTING and LANGUAGE STYLE only.
+Do NOT copy content, phrasing, or narrative structure from the example papers.
+The examples are in a different research domain - focus only on presentation style.
+
+════════════════════════════════════════════════════════════════════════════════
+                            EXPERIMENT REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+# Basis Vectors in Persona Space
+
+## 1. Executive Summary
+This study tested whether persona representations in a language model can be decomposed into shared basis vectors and whether PCA recovers primary components in residual-stream geometry.
+
+Using a real model (`Qwen/Qwen2.5-0.5B`) and local persona datasets, we found strong low-dimensional structure: top-10 PCs explained **57.14%** of variance, and top-20 explained **70.06%**. Subspace stability across bootstrap splits was high (mean overlap **0.905 ± 0.016**).
+
+Causal steering evidence was mixed: one directional test (`PC-` vs base) was significant (Wilcoxon **p=0.0228**, effect size **d=-0.309**), while `PC+` improvements over baseline/random were not statistically significant. External alignment with Big-5 labels was weak and not significant after FDR correction.
+
+## 2. Goal
+### Hypothesis
+Persona representations in residual streams are decomposable into reusable components, and PCA over persona vectors should reveal primary axes that are stable and behaviorally meaningful.
+
+### Why Important
+If true, persona steering can move from many brittle handcrafted vectors toward compact interpretable bases, improving controllability, transfer, and mechanistic understanding.
+
+### Problem Solved
+This work provides an empirical pipeline to test whether persona vectors exhibit low-rank geometry and whether top components support causal interventions.
+
+## 3. Data Construction
+### Dataset Description
+- `proj-persona/PersonaHub` (`datasets/personahub_persona`): persona text corpus, used to build vector bank.
+- `AlekseyKorshuk/persona-chat` (`datasets/persona_chat`): dialogue prompts for steering evaluation.
+- `holistic-ai/Personality_mypersonality` (`datasets/mypersonality`): text + Big-5 labels for external trait validation.
+
+### Example Samples
+| Dataset | Example |
+|---|---|
+| PersonaHub | &#34;A young inmate inspired by the activist&#39;s story and is striving to reform himself while inside prison&#34; |
+| PersonaHub | &#34;A small business owner in New York with little financial knowledge&#34; |
+| PersonaChat prompt | `User: hello what are you up to this evening ?\nAssistant:` |
+
+### Data Quality
+From `results/data_quality.json`:
+- Missing values: **0%** in checked subsets.
+- Duplicates (PersonaHub checked slice): **0**.
+- Persona length stats: mean **13.80**, std **4.20**, min **1**, max **51**, outliers (&gt;3σ) **10**.
+- myPersonality label parse failures: **0/500** checked.
+
+### Preprocessing Steps
+1. Strip and normalize whitespace in all texts.
+2. Sample persona rows uniformly without replacement (`n=800`).
+3. Construct persona prompts: `System: You are defined by this persona: ...`.
+4. Parse myPersonality JSON answers into binary Big-5 labels (`y=1`, `n=0`).
+5. Build PersonaChat evaluation prompts from validation histories.
+
+### Train/Val/Test Splits
+- Persona geometry: sampled from PersonaHub train split.
+- Steering evaluation: PersonaChat validation prompts.
+- Trait alignment: myPersonality train sampled subset.
+
+## 4. Experiment Description
+### Methodology
+#### High-Level Approach
+1. Extract hidden-state vectors for persona prompts.
+2. Fit PCA on centered vectors.
+3. Quantify explained variance and subspace stability.
+4. Intervene during generation by adding/subtracting PC directions at a target residual layer.
+5. Compare against random-direction baseline.
+6. Test correlations between PC scores and external Big-5 traits.
+
+#### Why This Method
+- Directly addresses the user hypothesis: persona vectors -&gt; PCA -&gt; primary components.
+- Uses causal intervention (not only descriptive geometry).
+- Uses independent trait labels for external validation.
+
+### Implementation Details
+#### Tools and Libraries
+- Python 3.12.8
+- torch 2.5.1+cu124
+- transformers 4.51.3
+- datasets 4.6.1
+- scikit-learn 1.8.0
+- scipy 1.17.1
+- statsmodels 0.14.6
+- matplotlib 3.10.8 / seaborn 0.13.2
+
+#### Model
+- `Qwen/Qwen2.5-0.5B` (real pretrained LLM)
+- Hidden dim: 896
+- Layers: 24
+- Main extraction layer: 23 (last), with cross-layer check vs layer 12
+
+#### Hyperparameters
+| Parameter | Value | Selection Method |
+|---|---:|---|
+| persona_samples | 800 | runtime/coverage tradeoff |
+| steering_eval_prompts | 48 (45 usable) | held-out validation prompts |
+| trait_samples | 800 | runtime/coverage tradeoff |
+| max_length_extract | 128 | fixed truncation |
+| max_new_tokens | 24 | speed + sufficient lexical signal |
+| batch_size | 64 | GPU memory-guided (24GB class) |
+| pca_components | 20 | captures dominant variance |
+| steering_alpha | 8.0 | pilot-scaled intervention |
+| seed | 42 | reproducibility |
+
+### Experimental Protocol
+#### Reproducibility
+- Runs averaged: single deterministic run + deterministic rerun check.
+- Seed: 42 for Python/NumPy/PyTorch/CUDA.
+- Hardware: 2x NVIDIA GeForce RTX 3090 (24GB each).
+- Mixed precision: enabled on CUDA.
+- Runtime per full run: ~22s.
+
+#### Evaluation Metrics
+- Geometry: EVR top-k, PC-wise EVR.
+- Stability: subspace overlap (cosine of principal angles) across bootstrap splits.
+- Causal steering: lexical score (`pos_hits - neg_hits`) under base/PC+/PC-/random+.
+- External validity: Pearson r between PC1-5 projections and Big-5 labels (+ BH-FDR correction).
+
+### Raw Results
+#### Geometry
+| Metric | Value |
+|---|---:|
+| EVR top-10 | **0.5714** |
+| EVR top-20 | **0.7006** |
+| PC1 EVR | 0.1515 |
+| PC2 EVR | 0.0872 |
+| Split subspace overlap (mean ± sd) | **0.9050 ± 0.0163** |
+| Random 10D basis variance ratio (mean) | 0.0113 |
+| Cross-layer overlap (layer12 vs layer23, top10) | 0.2802 |
+
+#### Steering
+Score means by condition:
+- Base: **0.0417**
+- PC+: **0.1250**
+- PC-: **-0.0417**
+- Random+: **0.1042**
+
+Statistical tests (Wilcoxon, directional):
+- PC+ vs Base: mean Δ=0.0889, 95% CI [0.0000, 0.2667], p=0.1587, d=0.149
+- PC+ vs Random+: mean Δ=0.0222, 95% CI [0.0000, 0.0667], p=0.1587, d=0.149
+- PC- vs Base: mean Δ=-0.0889, 95% CI [-0.1778, -0.0222], **p=0.0228**, d=-0.309
+
+#### Trait Alignment
+- Significant correlations after BH-FDR: **0**
+- Maximum absolute raw correlation: **|r|=0.0918** (small)
+
+### Output Locations
+- Metrics JSON: `results/metrics.json`
+- Quality report: `results/data_quality.json`
+- Steering rows: `results/steering_outputs.csv`
+- Trait correlations: `results/trait_alignment_rows.json`
+- Plots:
+  - `results/plots/pca_scree.png`
+  - `results/plots/steering_scores_boxplot.png`
+  - `results/plots/trait_pc_heatmap.png`
+
+## 5. Result Analysis
+### Key Findings
+1. **Strong low-rank persona geometry**: top PCs explain large variance quickly.
+2. **High in-layer subspace stability**: bootstrap overlap ~0.905 supports reproducible component structure.
+3. **Causal steering is asymmetric and weak-to-moderate**: negative-direction steering had significant effect; positive direction did not beat baseline/random significantly.
+4. **Limited external trait transfer**: no corrected-significant Big-5 alignment.
+
+### Hypothesis Testing
+- H1 (low-dimensional structure): **supported**.
+- H2 (causal usefulness): **partially supported** (one significant directional result, small effect).
+- H3 (external trait alignment): **not supported** in this setup.
+- H4 (stability): **supported within layer splits**, but cross-layer overlap was low-moderate (0.280), suggesting layer-specific bases.
+
+### Comparison to Baselines
+- PCA geometry vastly exceeded random basis variance capture.
+- PC+ did not significantly outperform random+ in lexical steering score.
+- PC- produced a significant directional effect relative to base.
+
+### Surprises and Insights
+- Strong geometric structure did not automatically translate to strong semantic steering gains.
+- Cross-layer component mismatch suggests persona components are not fully layer-invariant.
+
+### Error Analysis
+Observed failure patterns in generated outputs:
+- Generic fallback completions reduce lexical sensitivity.
+- Some prompts reproduce user text rather than expanding persona content.
+- Lexical metric can miss semantic persona shifts that do not use lexicon tokens.
+
+### Limitations
+- Single-model study (`Qwen2.5-0.5B`) with modest sample sizes.
+- Lexicon-based steering metric is coarse and may under-detect semantics.
+- No human evaluation of persona faithfulness.
+- No spherical steering or SAE decomposition baseline in this run.
+
+## 6. Conclusions
+Persona vectors from diverse persona documents show clear low-dimensional organization in residual representations, and PCA reliably recovers primary geometric components. However, causal persona control from those components is weaker than geometry alone suggests, with only partial steering significance and limited transfer to external Big-5 labels.
+
+Practical implication: PCA basis discovery is promising for analysis and compression of persona vectors, but stronger intervention objectives and richer evaluation metrics are needed before treating top PCs as robust persona control knobs.
+
+Confidence: **moderate** for geometric claims, **low-to-moderate** for causal persona-control claims.
+
+## 7. Next Steps
+### Immediate Follow-ups
+1. Replace lexical score with classifier-based persona fidelity and OOC metrics.
+2. Run multi-model replication (`Qwen2.5-1.5B`, `Llama-3.1-8B` if resources permit).
+3. Add spherical steering and raw-centroid steering baselines.
+4. Expand alpha sweep and per-layer sweep for intervention sensitivity.
+
+### Alternative Approaches
+- Sparse autoencoder features as nonlinear persona basis.
+- Canonical correlation between persona and trait datasets before intervention.
+
+### Broader Extensions
+- Cross-lingual persona basis transfer.
+- Safety-focused decomposition (toxicity/helpfulness/persona entanglement).
+
+### Open Questions
+- Which PCs are causal vs merely descriptive?
+- Can shared persona basis generalize across model families?
+- How much of persona is nonlinear and missed by PCA?
+
+## References
+- Shai et al. (2024). *Transformers represent belief state geometry in their residual stream*.
+- Cao et al. (2024). *Personalized Steering of LLMs via Bi-directional Preference Optimization*.
+- Lawson et al. (2024). *Residual Stream Analysis with Multi-Layer SAEs*.
+- Braun (2026). *Understanding Unreliability of Steering Vectors in Language Models*.
+- You et al. (2026). *Spherical Steering*.
+- Zhang et al. (2018). *Personalizing Dialogue Agents (PersonaChat)*.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                            RESEARCH PLAN
+════════════════════════════════════════════════════════════════════════════════
+
+# Planning: Basis Vectors in Persona Space
+
+## Motivation &amp; Novelty Assessment
+
+### Why This Research Matters
+Persona control is central to safe, useful, and personalized LLM deployment, but current steering practice is mostly ad hoc and prompt-specific. If persona behavior decomposes into reusable latent components, we can build more robust, interpretable, and transferable control methods. This benefits alignment, product personalization, and mechanistic interpretability by turning many fragile steering vectors into a smaller, structured basis.
+
+### Gap in Existing Work
+Recent work shows linear residual-stream geometry and activation steering effectiveness, but there is limited direct evaluation of persona-specific basis recovery via PCA over a large, diverse persona vector bank. Existing papers emphasize individual steering directions or reliability analysis, not a systematic decomposition into primary shared persona components plus validation across datasets and prompts. Cross-layer consistency of persona components also remains underexplored.
+
+### Our Novel Contribution
+We test a direct pipeline: construct many persona vectors from diverse persona documents, perform PCA in residual space, and evaluate whether top PCs are (a) geometrically stable, (b) behaviorally meaningful under intervention, and (c) aligned with independent personality labels. We also compare against random orthonormal bases and raw per-persona vectors to isolate whether PCA gives genuinely better structure.
+
+### Experiment Justification
+- Experiment 1: Persona Vector Bank + PCA Geometry. Needed to test whether strong low-dimensional structure exists and quantify explained variance/stability.
+- Experiment 2: Steering with PC Basis vs Baselines. Needed to test whether recovered components are causally meaningful, not just descriptive.
+- Experiment 3: External Trait Alignment + Robustness. Needed to test generalization and rule out dataset-specific artifacts.
+
+## Research Question
+Can persona representations in a transformer residual stream be decomposed into shared basis directions, such that PCA over persona vectors reveals primary components that are stable and useful for causal persona steering?
+
+## Background and Motivation
+Prior literature and resources in this workspace indicate that steering vectors often work linearly but can be unreliable across prompts and domains. We leverage PersonaHub for broad persona diversity, Persona-Chat for behavioral testing, and myPersonality for trait-linked external validation. The core practical question is whether a compact PCA basis can replace large sets of task/persona-specific vectors while preserving controllability.
+
+## Hypothesis Decomposition
+- H1 (Geometry): Persona vectors occupy a low-dimensional subspace; top-k PCs explain substantially more variance than random controls.
+- H2 (Causality): Intervening along top PCs changes persona-relevant generation metrics more than random directions and comparably or better than single raw persona vectors.
+- H3 (Transfer): PC scores correlate with independent personality-trait labels (myPersonality), indicating shared components beyond one dataset.
+- H4 (Stability): PC directions are consistent across data subsamples, seeds, and nearby layers.
+
+Independent variables:
+- Intervention direction type: top PC / raw persona vector / random orthonormal direction / no intervention.
+- Layer: selected residual-stream layers.
+- Intervention strength alpha.
+- Prompt set and random seed.
+
+Dependent variables:
+- Explained variance ratio (EVR) and cumulative EVR.
+- Steering effect size on persona classifier score / lexical persona adherence.
+- Utility retention metric on neutral completion quality proxy.
+- Correlation between PC projections and Big-5 labels.
+- Subspace stability metrics (principal angle overlap, cosine similarity of matched PCs).
+
+Success criteria:
+- Top 10-20 PCs explain clearly elevated variance (target: &gt;35% on sampled bank, model-dependent).
+- PC-steering outperforms random directions with statistically significant effect and non-trivial effect size.
+- At least one interpretable PC shows significant association with external trait dimensions after multiple-testing correction.
+
+Alternative explanations considered:
+- PCs capture style length/frequency artifacts rather than persona semantics.
+- Effects are prompt-template specific.
+- Correlations arise from dataset leakage/domain overlap.
+
+## Proposed Methodology
+
+### Approach
+Use TransformerLens to extract residual activations from a real open model under persona-conditioned text, derive per-persona vectors (persona prompt minus neutral prompt activations), fit PCA on standardized vectors, and evaluate both geometric structure and intervention effects.
+
+### Experimental Steps
+1. Environment + reproducibility setup (seeds, versions, GPU logging): ensures repeatability.
+2. Data loading and validation for PersonaHub, Persona-Chat, myPersonality: ensures schema correctness and representative sampling.
+3. Build persona prompt pairs (persona vs neutral paraphrase/control): isolates persona signal.
+4. Activation extraction at selected layers and token positions: produces persona vector bank.
+5. PCA fit and stability analysis across bootstrap splits: tests H1 and H4.
+6. Intervention experiments on held-out prompts with top PCs and baselines: tests H2.
+7. Trait alignment on myPersonality via projection/regression: tests H3.
+8. Statistical analysis and visualization with corrected significance tests.
+
+### Baselines
+- No intervention (base model).
+- Random orthonormal directions (same norm as PCs).
+- Raw persona centroid vectors (non-PCA).
+- Prompt-only persona instruction baseline.
+
+### Evaluation Metrics
+- Cumulative explained variance (PCA).
+- Subspace similarity (principal angles, canonical correlations).
+- Persona steering score change (classifier/proxy score delta).
+- Utility retention (perplexity-like proxy or neutral task score delta).
+- Pearson/Spearman correlation of PC coordinates with Big-5 labels.
+- Out-of-character proxy rate on Persona-Chat held-out prompts.
+
+### Statistical Analysis Plan
+Preregistered tests:
+- EVR comparison vs random basis: permutation test.
+- Steering effects across direction types: repeated-measures ANOVA or Friedman (assumption-dependent), post-hoc Holm correction.
+- Pairwise effect size: Cohen&#39;s d (or Cliff&#39;s delta if non-normal).
+- Trait alignment: multiple linear regression and permutation correlation with Benjamini-Hochberg FDR correction.
+- Significance threshold alpha = 0.05 (two-sided), with 95% bootstrap CIs.
+
+Assumption checks:
+- Shapiro-Wilk on paired deltas, Levene where relevant.
+- If violated, switch to non-parametric equivalents.
+
+## Expected Outcomes
+Evidence for hypothesis would be:
+- Strong low-rank persona geometry (high early EVR).
+- Top PCs inducing consistent persona-relevant shifts with smaller side effects than random directions.
+- Non-zero, corrected-significant trait associations for some PCs.
+
+Refuting evidence would be:
+- Flat EVR spectrum near random.
+- No causal steering gain over random directions.
+- No stable cross-dataset trait association.
+
+## Timeline and Milestones
+- M1 (20 min): finalize plan and environment checks.
+- M2 (30 min): data validation + prompt pair construction.
+- M3 (45 min): activation extraction pipeline and PCA.
+- M4 (45 min): steering intervention experiments.
+- M5 (30 min): statistical analysis and plots.
+- M6 (30 min): REPORT.md + README.md + validation rerun.
+
+Includes ~25% buffer for debugging and reruns.
+
+## Potential Challenges
+- Activation extraction runtime on large samples: mitigate via stratified subsampling and batching.
+- Persona metric noisiness: mitigate with multiple prompts/seeds and bootstrap CIs.
+- Trait alignment weak signal: mitigate via regularized models and careful confound checks.
+- Library compatibility: pin versions in `pyproject.toml` and log exact versions.
+
+## Success Criteria
+- End-to-end reproducible pipeline scripts in `src/`.
+- Results artifacts saved in `results/` and `figures/`.
+- Statistical tests with CIs/effect sizes completed.
+- REPORT.md documents actual measured outcomes, limitations, and next experiments.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          LITERATURE REVIEW
+════════════════════════════════════════════════════════════════════════════════
+
+# Literature Review: Basis Vectors in Persona Space
+
+## Research Area Overview
+This review targets the hypothesis that persona representations in language models can be decomposed into component vectors, and that PCA over persona vectors reveals primary axes in residual-stream geometry. The most relevant neighboring areas are:
+- Persona-conditioned generation and persona fidelity evaluation
+- Steering vectors / activation engineering for behavior control
+- Residual-stream geometry and mechanistic interpretability
+- Sparse and linear decomposition methods (PCA, SAE, linear probes)
+
+The reviewed evidence consistently supports a strong linear-geometry signal in hidden states, while also showing important limits: steering effects can be unstable across prompts and behaviors, and geometric assumptions can break under distribution shift.
+
+## Review Scope
+
+### Research Question
+Can persona behavior be represented as approximately linear directions/subspaces in model residual streams, and can PCA recover robust primary persona components?
+
+### Inclusion Criteria
+- Persona modeling, persona-steered generation, or persona fidelity in LLMs
+- Steering vectors / representation engineering in residual activations
+- Residual-stream geometry analyses in transformer models
+- Papers with actionable methodology for intervention/evaluation
+
+### Exclusion Criteria
+- Non-language persona work (e.g., purely visual avatars) unless method transfers clearly
+- Papers without method detail relevant to residual representations
+- Non-technical opinion/commentary
+
+### Time Frame
+- Primary focus: 2024-2026
+- Foundational anchor: PersonaChat paper (2018)
+
+### Sources
+- arXiv (primary)
+- HuggingFace datasets (for benchmark acquisition)
+- GitHub repositories for implementations
+
+## Search Log
+
+| Date | Query | Source | Results | Notes |
+|------|-------|--------|---------|-------|
+| 2026-02-28 | `persona representations residual stream PCA language models` | local `find_papers.py` | service stalled | Switched to manual search |
+| 2026-02-28 | persona dialogue / persona-conditioned LM / steering vectors / residual stream geometry | arXiv API | 70 unique candidates | Curated top 10 relevant papers |
+| 2026-02-28 | persona/personality datasets | HuggingFace | multiple candidates | Downloaded 3 datasets |
+
+## Screening Results
+- Title/abstract screening: 70 candidates
+- Full download: 10 papers (all in `papers/`)
+- Deep reading setup: chunked 3 highest-priority papers using PDF chunker
+
+## Key Papers
+
+### Paper 1: Transformers represent belief state geometry in their residual stream
+- **Authors**: Adam S. Shai et al.
+- **Year**: 2024
+- **Source**: arXiv 2405.15943
+- **Key Contribution**: Shows residual streams encode belief-state geometry with approximately linear structure.
+- **Methodology**: Theoretical framing from belief updating + empirical geometry analysis of residual activations.
+- **Datasets Used**: Task-specific hidden-state evaluations (see paper for exact setups).
+- **Results**: Strong evidence for geometrically meaningful latent representations in residual space.
+- **Code Available**: Not confirmed from abstract metadata.
+- **Relevance to Our Research**: Core theoretical support for PCA/subspace analysis over persona vectors.
+
+### Paper 2: Personalized Steering of LLMs via Bi-directional Preference Optimization
+- **Authors**: Yuanpu Cao et al.
+- **Year**: 2024
+- **Source**: arXiv 2406.00045
+- **Key Contribution**: Learns versatile steering vectors for personalization without full fine-tuning.
+- **Methodology**: Preference-driven optimization of steering directions applied at inference-time activations.
+- **Datasets Used**: Benchmark-style evaluation sets (paper reports multiple tasks).
+- **Results**: Steering vectors improve personalized control while preserving base-model utility.
+- **Code Available**: Not confirmed in metadata.
+- **Relevance to Our Research**: Provides practical recipe for constructing persona vectors before PCA.
+
+### Paper 3: Residual Stream Analysis with Multi-Layer SAEs
+- **Authors**: Tim Lawson et al.
+- **Year**: 2024
+- **Source**: arXiv 2409.04185
+- **Key Contribution**: Introduces multi-layer SAE to analyze information flow across residual streams.
+- **Methodology**: Train single SAE over activations from multiple layers instead of layer-isolated SAEs.
+- **Datasets Used**: Transformer activation corpora (see paper for exact corpus/model details).
+- **Results**: Better cross-layer interpretability than layer-by-layer SAE isolation.
+- **Code Available**: Related tooling available in SAE ecosystem.
+- **Relevance to Our Research**: Strong complement to PCA for identifying shared axes across layers.
+
+### Paper 4: Understanding Unreliability of Steering Vectors in Language Models
+- **Authors**: Joschka Braun
+- **Year**: 2026
+- **Source**: arXiv 2602.17881
+- **Key Contribution**: Explains why steering vectors can be inconsistent; proposes geometric predictors.
+- **Methodology**: Correlates steering success with cosine similarity and training-activation geometry.
+- **Datasets Used**: Multi-benchmark steering evaluation.
+- **Results**: Reliability strongly depends on vector geometry and training sample alignment.
+- **Code Available**: Not confirmed in metadata.
+- **Relevance to Our Research**: Warns against over-interpreting top PCs without reliability diagnostics.
+
+### Paper 5: Spherical Steering
+- **Authors**: Zejia You et al.
+- **Year**: 2026
+- **Source**: arXiv 2602.08169
+- **Key Contribution**: Replaces additive steering with norm-preserving geometric rotation.
+- **Methodology**: Training-free activation rotation on a sphere.
+- **Datasets Used**: Standard LM steering evaluations.
+- **Results**: Better control-quality tradeoff under some settings than additive steering.
+- **Code Available**: Not confirmed in metadata.
+- **Relevance to Our Research**: Tests whether principal persona axes are additive or rotation-aligned.
+
+### Paper 6: Improving Reasoning Performance via Representation Engineering
+- **Authors**: Bertram Højer et al.
+- **Year**: 2025
+- **Source**: arXiv 2504.19483
+- **Key Contribution**: Uses residual-stream-derived control vectors to improve reasoning.
+- **Methodology**: Read/construct control vectors from task activations and intervene during generation.
+- **Datasets Used**: Reasoning benchmarks (paper reports benchmark suite).
+- **Results**: Demonstrates measurable gains under intervention.
+- **Code Available**: Not confirmed in metadata.
+- **Relevance to Our Research**: Provides end-to-end intervention template for vector directions.
+
+### Paper 7: Understanding Reasoning in Thinking LMs via Steering Vectors
+- **Authors**: Constantin Venhoff et al.
+- **Year**: 2025
+- **Source**: arXiv 2506.18167
+- **Key Contribution**: Studies steering behavior in chain-of-thought-heavy models.
+- **Methodology**: Analyze and inject steering vectors across reasoning tasks.
+- **Datasets Used**: Multi-task reasoning evaluation.
+- **Results**: Steering can modulate reasoning behavior but with controllability limits.
+- **Code Available**: Not confirmed in metadata.
+- **Relevance to Our Research**: Useful for testing persona vectors in long-form generation settings.
+
+### Paper 8: Evaluating LLM Biases in Persona-Steered Generation
+- **Authors**: Andy Liu, Mona Diab, Daniel Fried
+- **Year**: 2024
+- **Source**: arXiv 2405.20253
+- **Key Contribution**: Defines incongruous multi-trait personas and evaluates generated bias effects.
+- **Methodology**: Persona-steered generation evaluation against survey-derived expectations.
+- **Datasets Used**: Persona and survey-based evaluation resources.
+- **Results**: Shows non-trivial mismatch between intended and generated persona behavior.
+- **Code Available**: Not confirmed in metadata.
+- **Relevance to Our Research**: Supplies failure analyses and evaluation framing for persona-vector faithfulness.
+
+### Paper 9: Spotting Out-of-Character Behavior
+- **Authors**: Jisu Shin et al.
+- **Year**: 2025
+- **Source**: arXiv 2506.19352
+- **Key Contribution**: Atomic-level evaluation of persona fidelity in open-ended generation.
+- **Methodology**: Fine-grained OOC detection beyond single response-level scores.
+- **Datasets Used**: Persona-conditioned generation evaluations.
+- **Results**: Detects subtle misalignment missed by coarse metrics.
+- **Code Available**: Not confirmed in metadata.
+- **Relevance to Our Research**: Useful metric layer for evaluating PC-based persona interventions.
+
+### Paper 10: Personalizing Dialogue Agents (PersonaChat)
+- **Authors**: Saizheng Zhang et al.
+- **Year**: 2018
+- **Source**: arXiv 1801.07243
+- **Key Contribution**: Introduces PersonaChat benchmark and persona-conditioned dialogue setting.
+- **Methodology**: Condition dialogue models on profile sentences and dialogue context.
+- **Datasets Used**: PersonaChat (ConvAI2).
+- **Results**: Persona conditioning improves engagement and consistency.
+- **Code Available**: Historically integrated into ParlAI ecosystem.
+- **Relevance to Our Research**: Foundational benchmark/data for persona representation studies.
+
+## Common Methodologies
+- Activation steering vectors: used for behavior/persona modulation without full fine-tuning.
+- Residual-stream probing: linear analyses over hidden states (projection, PCA, probing, cosine geometry).
+- Representation interventions: add/rotate/project vectors at selected layers/tokens.
+- Mechanistic decomposition: SAE-based factorization as nonlinear complement to PCA.
+
+## Standard Baselines
+- Prompt-only persona steering
+- Fine-tuning / LoRA adaptation
+- Activation addition steering vectors
+- Zero-shot and few-shot prompting controls
+- Random direction controls / null interventions (recommended for this project)
+
+## Evaluation Metrics
+- Persona fidelity / out-of-character rate
+- Task accuracy on benchmark tasks
+- Steering success rate and side-effect rate
+- Cosine alignment between expected and observed direction shifts
+- Utility preservation metrics (performance drop on non-target tasks)
+
+## Datasets in the Literature
+- PersonaChat / ConvAI2: classical persona-conditioned dialogue
+- Synthetic/persona corpora: large-scale persona statements for controllable conditioning
+- Reasoning and utility benchmarks: commonly used to verify no catastrophic capability loss after steering
+
+## Gaps and Opportunities
+- Gap 1: Limited work directly tests PCA bases over persona embedding banks as the primary decomposition method.
+- Gap 2: Reliability of persona vectors across domains/prompts is under-characterized.
+- Gap 3: Cross-layer consistency of persona components is not fully studied.
+- Gap 4: Evaluation often mixes persona fidelity and task utility without clear Pareto analysis.
+
+## Recommendations for Our Experiment
+- **Recommended datasets**:
+  - `proj-persona/PersonaHub` (`persona` config) as primary source for diverse persona text vectors.
+  - `AlekseyKorshuk/persona-chat` for dialogue-level persona behavior checks.
+  - `holistic-ai/Personality_mypersonality` for trait-correlated validation.
+- **Recommended baselines**:
+  - Prompt-only persona control
+  - Additive steering vectors (RepE-style)
+  - Random-direction controls
+  - Optional spherical steering baseline
+- **Recommended metrics**:
+  - Persona fidelity / OOC detection
+  - Downstream utility retention
+  - Variance explained by top-K PCs
+  - Intervention stability across prompts and seeds
+- **Methodological considerations**:
+  - Build persona vector bank from consistent layer/token extraction rules.
+  - Run PCA per layer and jointly across layers to test transferability.
+  - Quantify reliability: per-persona variance, confidence intervals, and failure cases.
+  - Add ablations: PCA vs random orthonormal basis vs SAE features.
+
+## Practical Resource Notes
+- PDF chunks created for deep reading:
+  - `papers/pages/2406.00045_*`
+  - `papers/pages/2405.15943_*`
+  - `papers/pages/2409.04185_*`
+- Collected code tooling:
+  - `code/representation-engineering/`
+  - `code/pyvene/`
+  - `code/saelens/`
+  - `code/transformerlens/`
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          PAPER REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+Generate a complete academic paper with the following structure:
+
+1. TITLE
+   - Clear, specific, informative
+   - Should convey main finding or contribution
+
+2. AUTHOR
+   - Use this exact author line in the \author{} block: Ari Holtzman and Idea-Explorer
+
+3. ABSTRACT (150-250 words)
+   - Problem statement
+   - Approach
+   - Key results
+   - Significance
+
+4. INTRODUCTION
+   - Research problem and motivation
+   - Gap in existing work
+   - Our contribution (be specific)
+   - Paper organization
+
+5. RELATED WORK
+   - Organized by theme/approach
+   - Position our work relative to prior work
+   - Cite papers from literature review
+
+6. METHODOLOGY
+   - Clear description of approach
+   - Experimental setup
+   - Datasets used
+   - Evaluation metrics
+   - Baselines
+
+7. RESULTS
+   - Present results with tables and figures
+   - Statistical analysis
+   - Comparison to baselines
+   - Ablation studies (if applicable)
+
+8. DISCUSSION
+   - Interpretation of results
+   - Limitations
+   - Broader implications
+
+9. CONCLUSION
+   - Summary of contributions
+   - Key findings
+   - Future work
+
+10. REFERENCES
+   - BibTeX format
+   - All cited papers
+
+════════════════════════════════════════════════════════════════════════════════
+                          OUTPUT FORMAT
+════════════════════════════════════════════════════════════════════════════════
+
+Create a MODULAR LaTeX project with the following directory structure:
+
+paper_draft/
+├── main.tex              # Main file that imports all sections
+├── references.bib        # BibTeX references
+├── sections/
+│   ├── abstract.tex      # Abstract content
+│   ├── introduction.tex  # Introduction section
+│   ├── related_work.tex  # Related work section
+│   ├── methodology.tex   # Methodology section
+│   ├── results.tex       # Results section
+│   ├── discussion.tex    # Discussion section
+│   └── conclusion.tex    # Conclusion section
+├── figures/              # Directory for any generated figures
+├── tables/               # Directory for complex standalone tables
+└── appendix/             # Directory for appendix sections (if needed)
+
+INSTRUCTIONS:
+1. First, create the directory structure above (mkdir -p paper_draft/sections paper_draft/figures paper_draft/tables paper_draft/appendix)
+2. Write main.tex using the EXACT preamble for NEURIPS:
+
+   \documentclass{article}
+   \usepackage[final]{neurips_2025}  % NEURIPS style (neurips_2025.sty is in paper_draft/)
+   \usepackage[hidelinks]{hyperref}  % REQUIRED: clickable links
+   \usepackage{booktabs}  % REQUIRED: professional tables
+   \usepackage{graphicx}
+   \usepackage{amsmath,amssymb}
+
+   % Import command files
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+   % Use this bibliography style:
+   \bibliographystyle{plainnat}
+
+   \author{Ari Holtzman and Idea-Explorer}
+
+   - Use \input{sections/...} to include each section
+   - Use \bibliography{references} for references
+3. Write each section file with COMPLETE content (no placeholders)
+4. Each section file should include its \section{} command
+5. Write references.bib with all citations in BibTeX format
+6. After writing all files, compile the paper:
+   cd paper_draft && pdflatex -interaction=nonstopmode main.tex && bibtex main && pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex
+
+This modular structure allows humans to easily:
+- Edit individual sections without navigating a large file
+- Track changes per section
+- Reuse sections across different paper versions
+
+════════════════════════════════════════════════════════════════════════════════
+                          QUALITY REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+- Academic tone throughout
+- All claims must be supported by data from the experiment report
+- Proper citations using \cite{} commands
+- Clear figures and tables with proper captions
+- NO placeholder text - every section must have real content
+- The paper MUST compile without errors
+- If compilation fails, debug and fix the LaTeX errors
+
+════════════════════════════════════════════════════════════════════════════════
+                          LAB WRITING STYLE
+════════════════════════════════════════════════════════════════════════════════
+
+Follow these lab-specific conventions to match our paper style:
+
+1. LANGUAGE STYLE:
+   - Use active voice: "We propose", "We examine", "We focus on"
+   - Be direct and confident: "Our main question is...", "We hypothesize that..."
+   - State things clearly and simply - prefer plain language over jargon
+   - Use bold questions as paragraph organizers: {\bf what is X?}
+   - Include specific quantitative claims: "8.97% over baseline"
+   - Avoid fancy wording: "utilize" → "use", "facilitate" → "help"
+
+2. INTRODUCTION STRUCTURE:
+   - Engaging hook (get to the point quickly)
+   - Problem importance
+   - Gap identification
+   - Your approach with method figure reference
+   - Quantitative preview of results
+   - Contribution bullets (3-4 items, action verbs)
+
+3. CONTRIBUTION LISTS:
+   \begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+       \item We propose...
+       \item We conduct...
+       \item We complement...
+   \end{itemize}
+
+4. MODULAR COMMANDS STRUCTURE:
+   Command templates are pre-copied to paper_draft/commands/:
+   - math.tex: Math notation macros
+   - general.tex: Formatting macros
+   - macros.tex: Project-specific term definitions (customize this for your paper)
+
+   In main.tex, include:
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+5. REFERENCE CONVENTIONS:
+   Use reference macros from math.tex:
+   - \figref{fig:name} for "figure 1" (lowercase, in-sentence)
+   - \Figref{fig:name} for "Figure 1" (capitalized, start of sentence)
+   - \secref{sec:name} for "section 2"
+
+6. TEXT FORMATTING:
+   - Use \para{Header text} for bold paragraph headers
+   - Define method/dataset names with \textsc and \xspace:
+     \newcommand{\methodname}{\textsc{MethodName}\xspace}
+
+7. TABLE FORMATTING:
+   - Use booktabs package (no vertical lines)
+   - Use \resizebox{\textwidth}{!}{...} for wide tables
+   - Use @{} to remove padding at table edges
+   - Use \cmidrule(lr){x-y} for sub-headers
+   - Use \textsc{} for dataset/method names in headers
+   - Bold best results with {\bf ...}
+
+8. FIGURE FORMATTING:
+   - Use 0.32\textwidth for 3-column subfigures
+   - Use 0.95\linewidth for full-width figures
+   - Use \input{figures/legend} for shared legends
+   - Write self-contained captions explaining key observations
+
+9. RESULTS PRESENTATION:
+   - Define \increase and \decrease for colored arrows (green up, red down)
+   - Bold best results in tables
+   - Report confidence intervals when available
+
+10. ALGORITHM STYLING:
+    - Use algpseudocode with [noend]
+    - Use \triangleright for comments
+
+11. HYPERLINKS (REQUIRED):
+    - Always use \usepackage[hidelinks]{hyperref} or with colored links
+    - All citations, section refs, figure refs, table refs must be clickable
+    - This is essential for reader navigation
+
+════════════════════════════════════════════════════════════════════════════════
+                          WORKFLOW: REVIEW AND REFLECT
+════════════════════════════════════════════════════════════════════════════════
+
+Before calling finish, you MUST complete these review steps:
+
+1. REVIEW RESOURCES (at the start):
+   - Read .codex/skills/paper-writer/SKILL.md for detailed guidance
+   - Study templates/paper_writing/lab_style_guide.md for style conventions
+   - Browse paper_examples/ for formatting and language patterns
+
+2. SELF-REFLECTION (before finishing):
+   After writing all sections, review your work against these criteria:
+
+   LANGUAGE CHECK:
+   - [ ] Is the writing clear and jargon-free?
+   - [ ] Are claims specific with quantitative support?
+   - [ ] Is active voice used throughout?
+
+   FORMATTING CHECK:
+   - [ ] Does main.tex include \input{commands/math}, \input{commands/general}, \input{commands/macros}?
+   - [ ] Is hyperref package included for clickable references?
+   - [ ] Do tables use booktabs (no vertical lines)?
+   - [ ] Are best results bolded in tables?
+   - [ ] Are figures/tables properly captioned?
+
+   STRUCTURE CHECK:
+   - [ ] Does introduction follow: hook → importance → gap → approach → preview → contributions?
+   - [ ] Are contribution bullets specific with action verbs?
+   - [ ] Does the paper compile without errors?
+
+3. FIX ISSUES:
+   - Address any issues found in the self-reflection
+   - Re-compile and verify the PDF looks correct
+
+Only after completing this review should you consider the paper finished.

@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/workspaces/basis-vectors-persona-7acf-codex/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/workspaces/basis-vectors-persona-7acf-codex/literature_review.md",
+        "resources_catalog": "/workspaces/basis-vectors-persona-7acf-codex/resources.md",
+        "papers_dir": "/workspaces/basis-vectors-persona-7acf-codex/papers",
+        "datasets_dir": "/workspaces/basis-vectors-persona-7acf-codex/datasets",
+        "code_dir": "/workspaces/basis-vectors-persona-7acf-codex/code"
+      },
+      "log_file": "/workspaces/basis-vectors-persona-7acf-codex/logs/resource_finder_codex.log",
+      "transcript_file": "/workspaces/basis-vectors-persona-7acf-codex/logs/resource_finder_codex_transcript.jsonl",
+      "elapsed_time": 484.4287796020508
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 1157.144275188446,
+      "log_file": "/workspaces/basis-vectors-persona-7acf-codex/logs/execution_codex.log",
+      "transcript_file": "/workspaces/basis-vectors-persona-7acf-codex/logs/execution_codex_transcript.jsonl"
+    }
+  },
+  "work_dir": "/workspaces/basis-vectors-persona-7acf-codex"
+}

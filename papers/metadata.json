@@ -1,0 +1,186 @@
+[
+  {
+    "id": "2405.15943v3",
+    "title": "Transformers represent belief state geometry in their residual stream",
+    "authors": [
+      "Adam S. Shai",
+      "Sarah E. Marzen",
+      "Lucas Teixeira",
+      "Alexander Gietelink Oldenziel",
+      "Paul M. Riechers"
+    ],
+    "year": 2024,
+    "pdf_file": "2405.15943_v3_transformers_represent_belief_state_geometry_in_their_residu.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2405.15943v3",
+    "summary": "What computational structure are we building into large language models when we train them on next-token prediction? Here, we present evidence that this structure is given by the meta-dynamics of belief updating over hidden states of the data-generating process. Leveraging the theory of optimal prediction, we anticipate and then find that belief states are linearly represented in the residual stream of transformers, even in cases where the predicted belief state geometry has highly nontrivial fractal structure. We investigate cases where the belief state geometry is represented in the final residual stream or distributed across the residual streams of multiple layers, providing a framework to explain these observations. Furthermore we demonstrate that the inferred belief states contain information about the entire future, beyond the local next-token prediction that the transformers are explicitly trained on. Our work provides a general framework connecting the structure of training data to the geometric structure of activations inside transformers.",
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2602.17881v1",
+    "title": "Understanding Unreliability of Steering Vectors in Language Models: Geometric Predictors and the Limits of Linear Approximations",
+    "authors": [
+      "Joschka Braun"
+    ],
+    "year": 2026,
+    "pdf_file": "2602.17881_v1_understanding_unreliability_of_steering_vectors_in_language_.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2602.17881v1",
+    "summary": "Steering vectors are a lightweight method for controlling language model behavior by adding a learned bias to the activations at inference time. Although effective on average, steering effect sizes vary across samples and are unreliable for many target behaviors. In my thesis, I investigate why steering reliability differs across behaviors and how it is impacted by steering vector training data. First, I find that higher cosine similarity between training activation differences predicts more reliable steering. Second, I observe that behavior datasets where positive and negative activations are better separated along the steering direction are more reliably steerable. Finally, steering vectors trained on different prompt variations are directionally distinct, yet perform similarly well and exhibit correlated efficacy across datasets. My findings suggest that steering vectors are unreliable when the latent target behavior representation is not effectively approximated by the linear steering direction. Taken together, these insights offer a practical diagnostic for steering unreliability and motivate the development of more robust steering methods that explicitly account for non-linear latent behavior representations.",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2506.19352v1",
+    "title": "Spotting Out-of-Character Behavior: Atomic-Level Evaluation of Persona Fidelity in Open-Ended Generation",
+    "authors": [
+      "Jisu Shin",
+      "Juhyun Oh",
+      "Eunsu Kim",
+      "Hoyun Song",
+      "Alice Oh"
+    ],
+    "year": 2025,
+    "pdf_file": "2506.19352_v1_spotting_out_of_character_behavior_atomic_level_evaluation_o.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2506.19352v1",
+    "summary": "Ensuring persona fidelity in large language models (LLMs) is essential for maintaining coherent and engaging human-AI interactions. However, LLMs often exhibit Out-of-Character (OOC) behavior, where generated responses deviate from an assigned persona, leading to inconsistencies that affect model reliability. Existing evaluation methods typically assign single scores to entire responses, struggling to capture subtle persona misalignment, particularly in long-form text generation. To address this limitation, we propose an atomic-level evaluation framework that quantifies persona fidelity at a finer granularity. Our three key metrics measure the degree of persona alignment and consistency within and across generations. Our approach enables a more precise and realistic assessment of persona fidelity by identifying subtle deviations that real users would encounter. Through our experiments, we demonstrate that our framework effectively detects persona inconsistencies that prior methods overlook. By analyzing persona fidelity across diverse tasks and personality types, we reveal how task structure and persona desirability influence model adaptability, highlighting challenges in maintaining consistent persona expression.",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.HC"
+    ]
+  },
+  {
+    "id": "1801.07243v5",
+    "title": "Personalizing Dialogue Agents: I have a dog, do you have pets too?",
+    "authors": [
+      "Saizheng Zhang",
+      "Emily Dinan",
+      "Jack Urbanek",
+      "Arthur Szlam",
+      "Douwe Kiela",
+      "Jason Weston"
+    ],
+    "year": 2018,
+    "pdf_file": "1801.07243_v5_personalizing_dialogue_agents_i_have_a_dog_do_you_have_pets_.pdf",
+    "pdf_url": "https://arxiv.org/pdf/1801.07243v5",
+    "summary": "Chit-chat models are known to have several problems: they lack specificity, do not display a consistent personality and are often not very captivating. In this work we present the task of making chit-chat more engaging by conditioning on profile information. We collect data and train models to (i) condition on their given profile information; and (ii) information about the person they are talking to, resulting in improved dialogues, as measured by next utterance prediction. Since (ii) is initially unknown our model is trained to engage its partner with personal topics, and we show the resulting dialogue can be used to predict profile information about the interlocutors.",
+    "categories": [
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2406.00045v2",
+    "title": "Personalized Steering of Large Language Models: Versatile Steering Vectors Through Bi-directional Preference Optimization",
+    "authors": [
+      "Yuanpu Cao",
+      "Tianrong Zhang",
+      "Bochuan Cao",
+      "Ziyi Yin",
+      "Lu Lin",
+      "Fenglong Ma",
+      "Jinghui Chen"
+    ],
+    "year": 2024,
+    "pdf_file": "2406.00045_v2_personalized_steering_of_large_language_models_versatile_ste.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2406.00045v2",
+    "summary": "Researchers have been studying approaches to steer the behavior of Large Language Models (LLMs) and build personalized LLMs tailored for various applications. While fine-tuning seems to be a direct solution, it requires substantial computational resources and may significantly affect the utility of the original LLM. Recent endeavors have introduced more lightweight strategies, focusing on extracting \"steering vectors\" to guide the model's output toward desired behaviors by adjusting activations within specific layers of the LLM's transformer architecture. However, such steering vectors are directly extracted from the activations of human preference data and thus often lead to suboptimal results and occasional failures, especially in alignment-related scenarios. This work proposes an innovative approach that could produce more effective steering vectors through bi-directional preference optimization. Our method is designed to allow steering vectors to directly influence the generation probability of contrastive human preference data pairs, thereby offering a more precise representation of the target behavior. By carefully adjusting the direction and magnitude of the steering vector, we enabled personalized control over the desired behavior across a spectrum of intensities. Extensive experimentation across various open-ended generation tasks, particularly focusing on steering AI personas, has validated the efficacy of our approach. Moreover, we comprehensively investigate critical alignment-concerning scenarios, such as managing truthfulness, mitigating hallucination, and addressing jailbreaking attacks. Remarkably, our method can still demonstrate outstanding steering effectiveness across these scenarios. Furthermore, we showcase the transferability of our steering vectors across different models/LoRAs and highlight the synergistic benefits of applying multiple vectors simultaneously.",
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2504.19483v1",
+    "title": "Improving Reasoning Performance in Large Language Models via Representation Engineering",
+    "authors": [
+      "Bertram H\u00f8jer",
+      "Oliver Jarvis",
+      "Stefan Heinrich"
+    ],
+    "year": 2025,
+    "pdf_file": "2504.19483_v1_improving_reasoning_performance_in_large_language_models_via.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2504.19483v1",
+    "summary": "Recent advancements in large language models (LLMs) have resulted in increasingly anthropomorphic language concerning the ability of LLMs to reason. Whether reasoning in LLMs should be understood to be inherently different is, however, widely debated. We propose utilizing a representation engineering approach wherein model activations are read from the residual stream of an LLM when processing a reasoning task. The activations are used to derive a control vector that is applied to the model as an inference-time intervention, modulating the representational space of the model, to improve performance on the specified task. We publish the code for deriving control vectors and analyzing model representations. The method allows us to improve performance on reasoning benchmarks and assess how control vectors influence the final logit distribution of a model via metrics such as KL divergence and entropy. We apply control vectors to Mistral-7B-Instruct and a range of Pythia models on an inductive, a deductive and mathematical reasoning task. We show that an LLM can, to a certain degree, be controlled to improve its perceived reasoning ability by modulating activations. The intervention is dependent upon the ability to reliably extract the model's typical state when correctly solving a task. Our results suggest that reasoning performance can be modulated in the same manner as other information-processing tasks performed by LLMs and demonstrate that we are capable of improving performance on specific tasks via a simple intervention on the residual stream with no additional training.",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2602.08169v1",
+    "title": "Spherical Steering: Geometry-Aware Activation Rotation for Language Models",
+    "authors": [
+      "Zejia You",
+      "Chunyuan Deng",
+      "Hanjie Chen"
+    ],
+    "year": 2026,
+    "pdf_file": "2602.08169_v1_spherical_steering_geometry_aware_activation_rotation_for_la.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2602.08169v1",
+    "summary": "Inference-time steering has emerged as a promising paradigm for controlling language models (LMs) without the cost of retraining. However, standard approaches typically rely on activation addition, a geometric operation that inevitably alters the magnitude of hidden representations. This raises concerns about representation collapse and degradation of open-ended generation capabilities. In this work, we explore Spherical Steering, a training-free primitive that resolves this trade-off through activation rotation. Rather than shifting activations with a fixed vector, our method rotates them along a geodesic toward a target direction, guiding the activation toward the target concept while preserving the integrity of the signal. To further enhance adaptivity, we incorporate a confidence gate that dynamically modulates steering strength based on input uncertainty. Extensive experiments across multiple-choice benchmarks demonstrate that Spherical Steering significantly outperforms addition-based baselines (notably by +10% on TruthfulQA, COPA, and Storycloze), while simultaneously maintaining the model's general open-ended generation quality. This work highlights the value of geometric consistency, suggesting that norm-preserving rotation is a robust and effective primitive for precise inference-time control.",
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2506.18167v4",
+    "title": "Understanding Reasoning in Thinking Language Models via Steering Vectors",
+    "authors": [
+      "Constantin Venhoff",
+      "Iv\u00e1n Arcuschin",
+      "Philip Torr",
+      "Arthur Conmy",
+      "Neel Nanda"
+    ],
+    "year": 2025,
+    "pdf_file": "2506.18167_v4_understanding_reasoning_in_thinking_language_models_via_stee.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2506.18167v4",
+    "summary": "Recent advances in large language models (LLMs) have led to the development of thinking language models that generate extensive internal reasoning chains before producing responses. While these models achieve improved performance, controlling their reasoning processes remains challenging. This work presents a steering approach for thinking LLMs by analyzing and manipulating specific reasoning behaviors in DeepSeek-R1-Distill models. Through a systematic experiment on 500 tasks across 10 diverse categories, we identify several reasoning behaviors exhibited by thinking models, including expressing uncertainty, generating examples for hypothesis validation, and backtracking in reasoning chains. We demonstrate that these behaviors are mediated by linear directions in the model's activation space and can be controlled using steering vectors. By extracting and applying these vectors, we provide a method to modulate specific aspects of the model's reasoning process, such as its tendency to backtrack or express uncertainty. Our approach offers practical tools for steering reasoning processes in thinking models in a controlled and interpretable manner. We validate our steering method using three DeepSeek-R1-Distill models, demonstrating consistent control across different model architectures.",
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "2405.20253v1",
+    "title": "Evaluating Large Language Model Biases in Persona-Steered Generation",
+    "authors": [
+      "Andy Liu",
+      "Mona Diab",
+      "Daniel Fried"
+    ],
+    "year": 2024,
+    "pdf_file": "2405.20253_v1_evaluating_large_language_model_biases_in_persona_steered_ge.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2405.20253v1",
+    "summary": "The task of persona-steered text generation requires large language models (LLMs) to generate text that reflects the distribution of views that an individual fitting a persona could have. People have multifaceted personas, but prior work on bias in LLM-generated opinions has only explored multiple-choice settings or one-dimensional personas. We define an incongruous persona as a persona with multiple traits where one trait makes its other traits less likely in human survey data, e.g. political liberals who support increased military spending. We find that LLMs are 9.7% less steerable towards incongruous personas than congruous ones, sometimes generating the stereotypical stance associated with its demographic rather than the target stance. Models that we evaluate that are fine-tuned with Reinforcement Learning from Human Feedback (RLHF) are more steerable, especially towards stances associated with political liberals and women, but present significantly less diverse views of personas. We also find variance in LLM steerability that cannot be predicted from multiple-choice opinion evaluation. Our results show the importance of evaluating models in open-ended text generation, as it can surface new LLM opinion biases. Moreover, such a setup can shed light on our ability to steer models toward a richer and more diverse range of viewpoints.",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "2409.04185v3",
+    "title": "Residual Stream Analysis with Multi-Layer SAEs",
+    "authors": [
+      "Tim Lawson",
+      "Lucy Farnik",
+      "Conor Houghton",
+      "Laurence Aitchison"
+    ],
+    "year": 2024,
+    "pdf_file": "2409.04185_v3_residual_stream_analysis_with_multi_layer_saes.pdf",
+    "pdf_url": "https://arxiv.org/pdf/2409.04185v3",
+    "summary": "Sparse autoencoders (SAEs) are a promising approach to interpreting the internal representations of transformer language models. However, SAEs are usually trained separately on each transformer layer, making it difficult to use them to study how information flows across layers. To solve this problem, we introduce the multi-layer SAE (MLSAE): a single SAE trained on the residual stream activation vectors from every transformer layer. Given that the residual stream is understood to preserve information across layers, we expected MLSAE latents to 'switch on' at a token position and remain active at later layers. Interestingly, we find that individual latents are often active at a single layer for a given token or prompt, but the layer at which an individual latent is active may differ for different tokens or prompts. We quantify these phenomena by defining a distribution over layers and considering its variance. We find that the variance of the distributions of latent activations over layers is about two orders of magnitude greater when aggregating over tokens compared with a single token. For larger underlying models, the degree to which latents are active at multiple layers increases, which is consistent with the fact that the residual stream activation vectors at adjacent layers become more similar. Finally, we relax the assumption that the residual stream basis is the same at every layer by applying pre-trained tuned-lens transformations, but our findings remain qualitatively similar. Our results represent a new approach to understanding how representations change as they flow through transformers. We release our code to train and analyze MLSAEs at https://github.com/tim-lawson/mlsae.",
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ]
+  }
+]

@@ -1,0 +1,34 @@
+\section{Methodology}
+\label{sec:methodology}
+
+\para{Research question.} We ask whether persona representations in a transformer residual stream decompose into shared basis directions that are stable and causally meaningful.
+
+\subsection{Data and Preprocessing}
+
+We use three datasets. \personahub provides diverse persona descriptions for vector-bank construction. \personachat provides held-out dialogue prompts for steering evaluation. \mypersonality provides text with binary Big-5 labels for external alignment.
+
+Preprocessing follows a fixed pipeline: whitespace normalization, uniform sampling without replacement ($n=800$ for persona vectors and trait analysis), persona prompt construction in the template ``System: You are defined by this persona: ...'', and Big-5 label parsing from JSON answers. Data-quality checks report 0\% missing values in audited subsets, 0 duplicates in checked \personahub slices, and 0/500 parse failures for \mypersonality labels.
+
+\subsection{Model, Representation Extraction, and PCA}
+
+We use \qwen (24 layers, hidden size 896), extracting residual activations primarily at layer 23 (with a cross-layer comparison at layer 12). For each persona prompt, we collect hidden-state vectors with max length 128 and batch size 64. We center vectors and fit PCA with 20 components.
+
+\para{Geometry metrics.} We report component-wise and cumulative explained variance ratio (EVR), including top-10 and top-20 EVR.
+
+\para{Stability metrics.} We estimate subspace overlap between top-$k$ PCs across bootstrap splits using principal-angle overlap. We also compare to random orthonormal bases and compute a cross-layer top-10 overlap score.
+
+\subsection{Causal Steering Evaluation}
+
+We intervene during generation by adding or subtracting principal directions at a target residual layer with intervention strength $\alpha=8.0$. Conditions are: base (no intervention), \pcplus, \pcminus, and \randplus (random direction with matched norm). We generate up to 24 new tokens per prompt on held-out \personachat validation histories (48 prompts, 45 usable).
+
+\para{Steering score.} We use a lexical score defined as $\text{pos\_hits} - \text{neg\_hits}$. This metric is intentionally simple and fast but may miss semantic changes not expressed through lexicon tokens.
+
+\para{Statistical testing.} We run directional Wilcoxon signed-rank tests for pairwise comparisons, report 95\% confidence intervals for mean deltas, and include standardized effect sizes ($d$).
+
+\subsection{External Trait Alignment}
+
+For external validity, we project \mypersonality texts onto PC1--PC5 and compute Pearson correlations with Big-5 binary labels. We apply Benjamini-Hochberg FDR correction across tested correlations.
+
+\subsection{Implementation and Reproducibility}
+
+We use Python 3.12.8, torch 2.5.1+cu124, transformers 4.51.3, datasets 4.6.1, scikit-learn 1.8.0, scipy 1.17.1, and statsmodels 0.14.6. All random sources are seeded at 42 (Python, NumPy, PyTorch, CUDA). Experiments run on 2$\times$ NVIDIA RTX 3090 GPUs (24GB each) with mixed precision enabled. Runtime is approximately 22 seconds per full run.

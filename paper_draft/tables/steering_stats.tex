@@ -1,0 +1,16 @@
+\begin{table*}[t]
+\centering
+\caption{Steering outcomes on held-out \personachat prompts. We report condition means and directional Wilcoxon tests with 95\% confidence intervals. Best directional significance is in \textbf{bold}.}
+\label{tab:steering}
+\resizebox{0.95\textwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Comparison & Mean $\Delta$ & 95\% CI & $p$-value & Effect size ($d$) \\
+\midrule
+\pcplus vs Base & 0.0889 & [0.0000, 0.2667] & 0.1587 & 0.149 \\
+\pcplus vs \randplus & 0.0222 & [0.0000, 0.0667] & 0.1587 & 0.149 \\
+\pcminus vs Base & -0.0889 & [-0.1778, -0.0222] & {\bf 0.0228} & -0.309 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}

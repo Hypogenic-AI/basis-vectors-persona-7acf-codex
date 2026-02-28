@@ -1,0 +1,12 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\para{Interpreting the geometry-behavior gap.} The central empirical pattern is a mismatch between descriptive structure and controllability. PCA reveals a stable low-rank persona manifold, but top directions do not consistently deliver strong positive steering gains. This supports the view that not every high-variance component is a strong causal control direction \citep{braun2026unreliability}.
+
+\para{What is likely happening?} A plausible explanation is that leading PCs mix multiple factors, including format and style artifacts, while lexical scoring captures only a narrow slice of persona behavior. The significant \pcminus effect suggests some components do encode behaviorally relevant polarity, but additive interventions along PC1 alone are insufficient for robust positive control.
+
+\para{Implications for persona steering.} PCA remains useful for compression, diagnostics, and subspace characterization. For deployment-grade persona control, however, stronger objectives are needed: classifier-based fidelity targets, out-of-character detectors \citep{shin2025ooc}, and interventions that better respect geometry (e.g., rotational methods \citep{you2026spherical}).
+
+\para{Limitations.} Our study uses one model (\qwen) and modest sample sizes, with a coarse lexical metric and no human fidelity judgments. We do not include spherical steering or SAE-based decomposition baselines in this run, and cross-model generalization is not yet tested.
+
+\para{Broader impact.} Better persona control can improve user experience and consistency, but it can also increase risks of manipulation and identity overfitting. Mechanistic transparency and robust evaluation should be treated as safety requirements, not optional diagnostics.

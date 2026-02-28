@@ -1,0 +1,8 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We studied whether persona representations in transformer residual streams decompose into shared basis vectors. Using \qwen and three persona-related datasets, we found strong, reproducible low-rank geometry: top-10 PCs explain 57.14\% of variance, top-20 explain 70.06\%, and bootstrap overlap reaches 0.905 $\pm$ 0.016.
+
+Causal results were mixed. Negative-direction steering was significant relative to baseline ($p=0.0228$, $d=-0.309$), while positive-direction steering did not significantly outperform baseline or random directions. External Big-5 alignment was weak after multiple-testing correction.
+
+The key takeaway is that PCA basis discovery is effective for persona representation analysis, but geometric prominence alone does not guarantee robust controllability. Immediate next steps are to replace lexical scoring with classifier-based fidelity and out-of-character metrics, add layer/strength sweeps, and replicate across larger model families.

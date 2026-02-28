@@ -1,0 +1,22 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Persona control is central to personalized and safe LLM deployment, yet most steering practice still relies on brittle, handcrafted directions. Our main question is simple: can persona behavior be organized into a reusable basis in residual space, rather than a large set of one-off vectors?
+
+\para{Why this matters.} If persona representations share a low-rank structure, we can reduce control complexity, improve interpretability, and transfer directions across prompts more reliably. This directly affects controllable generation in dialogue systems, assistant personalization, and mechanistic interpretability.
+
+\para{What is missing in prior work?} Recent studies show that residual streams encode useful geometry and that activation steering can change behavior \citep{shai2024belief,cao2024bidirectional,hojer2025representation,venhoff2025reasoning}. However, prior work has not directly tested whether a broad persona vector bank decomposes into stable principal components that remain causally useful under intervention. At the same time, reliability studies show steering can degrade across prompt and domain conditions \citep{braun2026unreliability,you2026spherical}. Persona-focused evaluations also report mismatches between intended and produced traits \citep{liu2024biases,shin2025ooc}.
+
+\para{Our approach.} We build an end-to-end pipeline: collect persona vectors from \personahub, fit PCA in the residual stream of \qwen, test subspace stability under bootstrap splits, perform directional interventions on \personachat, and evaluate external alignment with Big-5 labels from \mypersonality. We report both effect sizes and significance tests.
+
+\para{What we find.} Geometry is strong and stable: top-10 and top-20 PCs explain 57.14\% and 70.06\% variance, with bootstrap overlap 0.905 $\pm$ 0.016. Causal effects are asymmetric: \pcminus significantly shifts lexical steering score relative to base, but \pcplus does not significantly beat base or random steering. External trait transfer is weak after multiple-testing correction.
+
+\para{Contributions.}
+\begin{itemize}
+    \item We propose a reproducible pipeline for persona-basis discovery in residual space using PCA and causal interventions.
+    \item We conduct a multi-part evaluation across geometry, subspace stability, steering outcomes, and external trait alignment.
+    \item We show a clear separation between descriptive geometry and controllable behavior: low-rank structure is strong, while steering gains are modest.
+    \item We provide empirical evidence that persona components are layer-sensitive, with low cross-layer overlap between middle and late layers.
+\end{itemize}
+
+\para{Paper organization.} \Secref{sec:related_work} situates our study in activation steering and persona modeling. \Secref{sec:methodology} describes datasets, extraction, PCA, and evaluation. \Secref{sec:results} reports quantitative findings. \Secref{sec:discussion} interprets implications and limitations, and \secref{sec:conclusion} concludes.

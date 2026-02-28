@@ -1,0 +1,191 @@
+[
+  {
+    "file": "1801.07243_v5_personalizing_dialogue_agents_i_have_a_dog_do_you_have_pets_.pdf",
+    "pages": 16,
+    "datasets": [
+      "ARC",
+      "PersonaChat",
+      "SQuAD"
+    ],
+    "metrics": [
+      "accuracy",
+      "F1",
+      "perplexity",
+      "cosine similarity"
+    ],
+    "baselines": [],
+    "glimpse": "arXiv:1801.07243v5 [cs.AI] 25 Sep 2018 Personalizing Dialogue Agents: I have a dog, do you have pets too? Saizheng Zhang\u2020,1, Emily Dinan \u2021, Jack Urbanek\u2021, Arthur Szlam \u2021, Douwe Kiela \u2021, Jason Weston\u2021 \u2020 Montreal Institute for Learning Algorithms, MILA \u2021 Facebook AI Research saizheng.zhang@umontreal.ca, {edinan,jju,aszlam,dkiela,jase}@fb.com Abstract Chit-chat models are known to have sev- eral problems: they lack speci\ufb01city, do not display a consistent personality and are of- ten not very captivating. In this work we present the task of making chit-chat more engaging by conditioning on pro\ufb01le infor- mation. We collect data and train models to (i) condition on their given pro\ufb01le in- formation;"
+  },
+  {
+    "file": "2405.15943_v3_transformers_represent_belief_state_geometry_in_their_residu.pdf",
+    "pages": 16,
+    "datasets": [
+      "ARC"
+    ],
+    "metrics": [
+      "accuracy"
+    ],
+    "baselines": [],
+    "glimpse": "Transformers Represent Belief State Geometry in their Residual Stream Adam S. Shai Simplex PIBBSS\u2217 Sarah E. Marzen Department of Natural Sciences Pitzer and Scripps College Lucas Teixeira PIBBSS Alexander Gietelink Oldenziel University College London Timaeus Paul M. Riechers Simplex BITS Abstract What computational structure are we building into large language models when we train them on next-token prediction? Here, we present evidence that this structure is given by the meta-dynamics of belief updating over hidden states of the data- generating process. Leveraging the theory of optimal prediction, we anticipate and then find that belief states are linearly represented in the residual strea"
+  },
+  {
+    "file": "2405.20253_v1_evaluating_large_language_model_biases_in_persona_steered_ge.pdf",
+    "pages": 19,
+    "datasets": [
+      "ARC"
+    ],
+    "metrics": [
+      "accuracy",
+      "F1"
+    ],
+    "baselines": [
+      "fine-tun",
+      "LoRA",
+      "prompting"
+    ],
+    "glimpse": "Evaluating Large Language Model Biases in Persona-Steered Generation Andy Liu Carnegie Mellon University andyliu@cs.cmu.edu Mona Diab Carnegie Mellon University mdiab@cs.cmu.edu Daniel Fried Carnegie Mellon University dfried@cs.cmu.edu Abstract The task of persona-steered text generation re- quires large language models (LLMs) to gen- erate text that reflects the distribution of views that an individual fitting a persona could have. People have multifaceted personas, but prior work on bias in LLM-generated opinions has only explored multiple-choice settings or one- dimensional personas. We define an incon- gruous persona as a persona with multiple traits where one trait makes its other trait"
+  },
+  {
+    "file": "2406.00045_v2_personalized_steering_of_large_language_models_versatile_ste.pdf",
+    "pages": 23,
+    "datasets": [
+      "MMLU",
+      "TruthfulQA",
+      "ARC"
+    ],
+    "metrics": [
+      "accuracy",
+      "BLEU",
+      "success rate"
+    ],
+    "baselines": [
+      "fine-tun",
+      "LoRA",
+      "few-shot",
+      "activation addition"
+    ],
+    "glimpse": "Personalized Steering of Large Language Models: Versatile Steering Vectors Through Bi-directional Preference Optimization Yuanpu Cao, Tianrong Zhang, Bochuan Cao, Ziyi Yin, Lu Lin, Fenglong Ma, Jinghui Chen The Pennsylvania State University {ymc5533, tbz5156, bccao, zmy5171, lulin, fenglong, jzc5917}@psu.edu Abstract Researchers have been studying approaches to steer the behavior of Large Language Models (LLMs) and build personalized LLMs tailored for various applications. While fine-tuning seems to be a direct solution, it requires substantial compu- tational resources and may significantly affect the utility of the original LLM. Recent endeavors have introduced more lightweight strategies,"
+  },
+  {
+    "file": "2409.04185_v3_residual_stream_analysis_with_multi_layer_saes.pdf",
+    "pages": 45,
+    "datasets": [
+      "ARC",
+      "C4"
+    ],
+    "metrics": [
+      "F1",
+      "cosine similarity"
+    ],
+    "baselines": [
+      "SAE"
+    ],
+    "glimpse": "Published as a conference paper at ICLR 2025 RESIDUAL STREAM ANALYSIS WITH MULTI -L AYER SAE S Tim Lawson\u2217 Lucy Farnik Conor Houghton Laurence Aitchison School of Engineering Mathematics and Technology University of Bristol Bristol, UK ABSTRACT Sparse autoencoders (SAEs) are a promising approach to interpreting the internal representations of transformer language models. However, SAEs are usually trained separately on each transformer layer, making it difficult to use them to study how information flows across layers. To solve this problem, we introduce the multi-layer SAE (MLSAE): a single SAE trained on the residual stream activation vectors from every transformer layer. Given that the res"
+  },
+  {
+    "file": "2504.19483_v1_improving_reasoning_performance_in_large_language_models_via.pdf",
+    "pages": 18,
+    "datasets": [
+      "GSM8K",
+      "ARC"
+    ],
+    "metrics": [
+      "accuracy"
+    ],
+    "baselines": [
+      "fine-tun",
+      "LoRA",
+      "prompting",
+      "few-shot",
+      "PCA"
+    ],
+    "glimpse": "Published as a conference paper at ICLR 2025 IMPROVING REASONING PERFORMANCE IN LARGE LANGUAGE MODELS VIA REPRESENTATION ENGI - NEERING Bertram H\u00f8jer\u2217, Oliver Jarvis \u2217, Stefan Heinrich Department of Computer Science, IT University of Copenhagen, Denmark {berh, ojar, stehe }@itu.dk ABSTRACT Recent advancements in large language models (LLMs) have resulted in in- creasingly anthropomorphic language concerning the ability of LLMs to reason. Whether reasoning in LLMs should be understood to be inherently different is, however, widely debated. We propose utilizing a representation engineering ap- proach wherein model activations are read from the residual stream of an LLM when processing a reason"
+  },
+  {
+    "file": "2506.18167_v4_understanding_reasoning_in_thinking_language_models_via_stee.pdf",
+    "pages": 19,
+    "datasets": [
+      "ARC"
+    ],
+    "metrics": [
+      "accuracy",
+      "F1",
+      "cosine similarity"
+    ],
+    "baselines": [
+      "fine-tun",
+      "prompting",
+      "few-shot",
+      "activation addition"
+    ],
+    "glimpse": "Published at ICLR 2025 Workshop on Reasoning and Planning for LLMs UNDERSTANDINGREASONING INTHINKINGLAN- GUAGEMODELS VIASTEERINGVECTORS Constantin V enhoff\u2217 University of Oxford United Kingdom constantin@robots.ox.ac.uk Iv\u00b4an Arcuschin\u2217 University of Buenos Aires Argentina iarcuschin@dc.uba.ar Philip Torr University of Oxford United Kingdom Arthur Conmy Neel Nanda ABSTRACT Recent advances in large language models (LLMs) have led to the development of thinkinglanguage models that generate extensive internal reasoning chains before producing responses. While these models achieve improved performance, control- ling their reasoning processes remains challenging. This work presents a steering app"
+  },
+  {
+    "file": "2506.19352_v1_spotting_out_of_character_behavior_atomic_level_evaluation_o.pdf",
+    "pages": 21,
+    "datasets": [
+      "ARC",
+      "PersonaChat"
+    ],
+    "metrics": [
+      "accuracy",
+      "AUC"
+    ],
+    "baselines": [
+      "LoRA",
+      "prompting",
+      "zero-shot"
+    ],
+    "glimpse": "arXiv:2506.19352v1 [cs.CL] 24 Jun 2025 Spotting Out-of-Character Behavior: Atomic-Level Evaluation of Persona Fidelity in Open-Ended Generation Jisu Shin Juhyun Oh * Eunsu Kim* Hoyun Song Alice Oh School of Computing Korea Advanced Institute of Science and Technology (KAIST) {jisu.shin,411juhyun,kes0317,hysong}@kaist.ac.kr alice.oh@kaist.edu Abstract Ensuring persona fidelity in large language models (LLMs) is essential for maintaining coherent and engaging human-AI interactions. However, LLMs often exhibit Out-of-Character (OOC) behavior, where generated responses deviate from an assigned persona, leading to inconsistencies that affect model reliability. Ex- isting evaluation methods typica"
+  },
+  {
+    "file": "2602.08169_v1_spherical_steering_geometry_aware_activation_rotation_for_la.pdf",
+    "pages": 21,
+    "datasets": [
+      "MMLU",
+      "TruthfulQA",
+      "ARC",
+      "winogrande"
+    ],
+    "metrics": [
+      "accuracy",
+      "cosine similarity"
+    ],
+    "baselines": [
+      "fine-tun",
+      "LoRA",
+      "prompting",
+      "few-shot",
+      "zero-shot",
+      "activation addition",
+      "linear probe",
+      "PCA",
+      "SAE"
+    ],
+    "glimpse": "Spherical Steering: Geometry-Aware Activation Rotation for Language Models Zejia You1,2, Chunyuan Deng1, Hanjie Chen1 1Rice University,2Tufts University Zejia.You@tufts.edu, chunyuan.deng@rice.edu, hanjie@rice.edu Abstract Inference-time steering has emerged as a promising paradigm for controlling language models (LMs) without thecostofretraining. However,standardapproachestypicallyrelyonactivationaddition,ageometricoperation that inevitably alters the magnitude of hidden representations. This raises concerns about representation collapse and degradation of open-ended generation capabilities. In this work, we exploreSpherical Steering, a training-free primitive that resolves this trade-off t"
+  },
+  {
+    "file": "2602.17881_v1_understanding_unreliability_of_steering_vectors_in_language_.pdf",
+    "pages": 89,
+    "datasets": [
+      "MMLU",
+      "TruthfulQA",
+      "ARC"
+    ],
+    "metrics": [
+      "F1",
+      "cosine similarity"
+    ],
+    "baselines": [
+      "fine-tun",
+      "LoRA",
+      "prompting",
+      "few-shot",
+      "zero-shot",
+      "activation addition",
+      "linear probe",
+      "SAE"
+    ],
+    "glimpse": "Eberhard Karls University of T\u00fcbingen Faculty of Science Master\u2019s Thesis submitted for the degree of Master of Science (M.Sc.) in Machine Learning Understanding Unreliability of Steering Vectors in Language Models: Geometric Predictors and the Limits of Linear Approximations submitted by Joschka Braun joschka.braun@student.uni-tuebingen.de Supervisors and Examiners: Ph.D. Seyed Ali Bahrainian Prof. Michael Franke Prof. Carsten Eickhoff T\u00fcbingen, June 12, 2025 arXiv:2602.17881v1 [cs.CL] 19 Feb 2026 Abstract Steering vectors are a lightweight method for controlling language model behavior by adding a learned bias to the activations at inference time. Although effective on average, steering eff"
+  }
+]

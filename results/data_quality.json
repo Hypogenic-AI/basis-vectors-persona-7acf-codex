@@ -1,0 +1,14 @@
+{
+  "persona_rows_checked": 1600,
+  "persona_missing": 0,
+  "persona_duplicates": 0,
+  "persona_len_mean": 13.796875,
+  "persona_len_std": 4.195577079051988,
+  "persona_len_min": 1,
+  "persona_len_max": 51,
+  "persona_outliers_gt_3sigma": 10,
+  "persona_chat_rows_checked": 500,
+  "persona_chat_missing_rows": 0,
+  "myp_rows_checked": 500,
+  "myp_parse_failures": 0
+}
